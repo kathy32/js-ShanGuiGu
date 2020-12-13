@@ -190,6 +190,38 @@
 
 
 7. JS 基础 - 字符串
+  - 数据类型：字面量的类型
+
+  - 六种数据类型（5种基本数据类型和1种引用数据类型）：
+
+    - String
+    - Number
+    - Boolean
+    - Null
+    - Undefined
+    - Object
+
+  - 字符串需要引号引起来
+
+    ```javascript
+    // 不是引号引起来的是变量
+    var str = 'hello'
+    console.log(hello)	// 报错,无 hello 变量
+    
+    // 引号不能嵌套
+    var str = "你说："我叫lokit~""
+    
+    // 正确的方式1：
+    var str = '你说："我叫lokit~"'
+    
+    // 正确方式2：转义字符\
+    var str = "你说：\"我叫lokit~\""
+    
+    // 打印两个 \\
+    console.log('\\\\')
+    ```
+
+    
 
 8. JS 基础 - Number
 
