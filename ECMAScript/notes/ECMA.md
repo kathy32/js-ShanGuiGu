@@ -245,6 +245,19 @@
   - js 中可以基本可以保证整数的运算精度，但是无法保证浮点数的运算精度，因为机器运算是二进制运算，无法保证 1/10，就比如像10进制无法表示 1/3 一样，出现精度损失。
 
 9. JS 基础 - 布尔值
+  - Boolean 只有两个值，主要做逻辑判断：
+
+    - true
+    - false
+
+  - ```javascript
+    let bool = true
+    let bool1 = 'true'
+    
+    console.log(bool)	// boolean
+    console.log(bool1)	// string
+    ```
+    
 
 10. JS 基础 - Null 和 Undefined
 
