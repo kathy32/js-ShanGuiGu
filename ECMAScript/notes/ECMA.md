@@ -260,6 +260,25 @@
     
 
 10. JS 基础 - Null 和 Undefined
+  - Null 类型的值只有一个，就是 null，其专门用来表示一个空的对象，使用 ```typeof``` 检查返回 ```object```
+
+    ```javascript
+    let a = null
+    console.log(a)	// object
+    ```
+
+  - Undefined 类型的值只有一个，就是 undefined
+
+    - 当声明一个变量，但是没有赋值时，其值就是 undefined
+    - 使用 ```typeof``` 检查一个 undefined 时，也会返回 undefined
+
+    ```javascript
+    let b;
+    let c = undefined
+    console.log(b)	// undefined
+    console.log(c)	// undefined
+    console.log(typeof c)	// undefined
+    ```
 
 11. JS 基础 - 强制类型转换 - String
 
