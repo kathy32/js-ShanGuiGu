@@ -224,6 +224,25 @@
     
 
 8. JS 基础 - Number
+  - 所有的数值都是 Number 类型：整数和浮点数
+
+  - 使用 ```typeof``` 检查变量类型
+
+  - js 中表示数字的最大值：```Number.MAX_VALUE```，如果超过了就是 ```Infinity```，正无穷大
+
+  - js 中表示数字的最小值：```Number.MIN_VALUE```，
+
+  - Infinity 和 NaN 都会返回 Number 类型
+
+    ```javascript
+    let n = NaN
+    let n1 = 'NaN'
+    
+    console.log(typeof n)	// Number
+    console.log(typeof n1)	// String
+    ```
+
+  - js 中可以基本可以保证整数的运算精度，但是无法保证浮点数的运算精度，因为机器运算是二进制运算，无法保证 1/10，就比如像10进制无法表示 1/3 一样，出现精度损失。
 
 9. JS 基础 - 布尔值
 
