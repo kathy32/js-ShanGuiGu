@@ -281,6 +281,54 @@
     ```
 
 11. JS 基础 - 强制类型转换 - String
+  - 强制类型转换：指将一个数据类型强制转换为其他的数据类型
+
+  - 类型转换：将其他的数据类型，转换为 String、Number、Boolean
+
+  - 将其他数据类型转换为 String：
+
+    - 方式一：调用被转换数据类型的 ```toString()```方法
+
+      ```javascript
+      // 该方法不会影响到原变量，它会将转换的结果返回
+      let a = 123
+      let b = a.toString()
+      console.log(typeof a)	// number
+      console.log(typeof b)	// string
+      
+      a = true
+      a = a.toString()
+      console.log(a)	// 'true'
+      
+      // 注意：null 和 undefined 这两个值没有 toString() 方法，如果调用了，会报错
+      a = null
+      a = a.toString()
+      console.log(a)	// 报错
+      
+      a = undefined
+      a = a.toString()
+      console.log(a)	// 报错
+      ```
+
+    - 调用 ```String()``` 函数，并将被转换的数据作为参数传递给函数。
+
+      - 注意：函数是直接用，方法是被调用
+
+      ```javascript
+      // 对 Number 和 Boolean 实际上就是调用 toString() 方法
+      let a = 123
+      a = String(a)
+      console.log(typeof a)	// string
+      
+      // 但是对于 null 和 undefined 就不会调用 toString() 方法
+      // 将 null 直接转换为 "null"
+      // 将 undefined 直接转换为 "undefined"
+      let a = null
+      a = String(a)
+      console.log(typeof a)	// string
+      ```
+
+      
 
 12. JS 基础 - 强制类型转换 - Number
 
