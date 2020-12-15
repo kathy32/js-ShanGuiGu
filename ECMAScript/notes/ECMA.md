@@ -415,6 +415,14 @@
 
 
 14. JS 基础 - 转换为 Boolean
+  将其他的数据类型转换为 Boolean，使用 ```Boolean() ```函数
+
+  - 数字 -> 布尔
+    - 除了 0 和 NaN，其余都是 true
+  - 字符串 -> 布尔
+    - 除了空串，其余都是 true
+  - null 和 undefined 都会转换为 false
+  - 对象也会转换为 true
 
 15. JS 基础 - 算数运算符
 
