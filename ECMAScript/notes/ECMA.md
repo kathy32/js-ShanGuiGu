@@ -331,6 +331,72 @@
       
 
 12. JS 基础 - 强制类型转换 - Number
+  - 方式一：使用 ```Number()``` 函数
+
+    - 字符串 -> 数字
+      - 如果是纯数字的字符串，则直接将其转换为数字
+      - 如果是非数字的字符串，则转换为 NaN
+      - 如果是一个空串或一个全是空格的字符串，则转换为 0
+
+    ```javascript
+    let a = "123"
+    a = Number(a)
+    console.log(typeof a)	// number
+    
+    let a = "123abc"
+    a = Number(a)
+    console.log(a)	// NaN
+    console.log(typeof a)	// number
+    
+    let a = ""
+    a = Number(a)
+    console.log(a)	// 0
+    console.log(typeof a)	// number
+    
+    let a = "   "
+    a = Number(a)
+    console.log(a)	// 0
+    console.log(typeof a)	// number
+    ```
+
+    - 布尔 -> 数字
+      - true 转成 1
+      - false 转成 0
+    - null -> 数字 0
+    - undefined -> 数字 NaN
+
+  - 方式二：这种方式专门对付字符串
+
+    - ```parseInt()``` 把一个字符串转换为一个整数，将一个字符串的有效整数内容取出来转换为 number
+
+      ```javascript
+      let a = "123.456px"
+      a = parseInt(a)
+      console.log(a)	// 123
+      console.log(typeof a)	// number
+      ```
+
+      
+
+    - ```parseFloat()``` 把一个字符串转换为一个浮点数，和 parseInt() 类似，不同的是获取有效的小数
+
+      ```javascript
+      let a = "123.456.789px"
+      a = parseFloat(a)
+      console.log(a)	// 123.456
+      console.log(typeof a)	// number
+      ```
+
+    - 如果对非 String 使用 parseInt() 或 parseFloat()，会先将其转换为 String，然后操作
+
+      ```javascript
+      let a = true
+      a = parseInt(a)
+      console.log(a)	// NaN
+      console.log(typeof a)	// number
+      ```
+
+    
 
 13. JS 基础 - 其他进制的数字
 
