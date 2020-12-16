@@ -587,8 +587,25 @@
         ```
 
     - 自增练习
-
-    
+      - ```javascript
+        let n1 = 10
+        let n2 = 20
+        let n = n1++
+        console.log(n)	// 10
+        console.log(n1)	// 11
+        
+        n = ++n1
+        console.log(n)	// 12
+        console.log(n1)	// 12
+        
+        n = n2--
+        console.log(n)	// 20
+        console.log(n2)	// 19
+        
+        n = --n2
+        console.log(n)	// 18
+        console.log(n2)	// 18
+        ```
 
 18. JS 基础 - 逻辑运算符
 
