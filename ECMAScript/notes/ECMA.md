@@ -668,6 +668,37 @@
     
 
 19. JS 基础 - 非布尔值的与或运算
+  - 对于非布尔值，它会将其转换为布尔值然后做运算，并返回原值
+
+  ```javascript
+  let res = 2 && 1
+  console.log(res)	// 1
+
+  // 返回靠前的 false
+  res = 0 && 2
+  console.log(res)	// 0
+
+  res = NaN && 0
+  console.log(res)	// NaN
+  ```
+
+  ```javascript
+  let res = 1 || 2
+  console.log(res)	// 1
+
+  res = 2 || NaN
+  console.log(res)	// 2
+
+  // 如果第一个值为 false，则直接返回第二个值
+  res = NaN || 2
+  console.log(res)	// 2
+
+  res = "" || "hello"
+  console.log(res)	// "hello"
+
+  res = -1 || "hello"
+  console.log(res)	// -1
+  ```
 
 20. JS 基础 - 赋值运算符
 
