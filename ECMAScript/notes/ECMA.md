@@ -772,6 +772,56 @@
     ```
 
 23. JS 基础 - 相等运算符
+  - ```==```
+
+    - 相等，判断左右两个值是否相等，如果相等返回 true，如果不等返回 false
+
+    - 相等会自动对两个值进行类型转换，如果对不同的类型进行比较，会将其转换为相同的类型然后再比较，转换后相等它也会返回 true
+
+      ```javascript
+      console.log('1' == 1)	// true
+      console.log(true == '1')	// true
+      
+      console.log(null == 0)	// false, 没有转成number
+      console.log(null == undefined)	// true, undefined 衍生自 null
+      
+      // NaN 不和任何值相等，包括其本身
+      console.log(1 == NaN)	// false
+      console.log(NaN == NaN)	// false
+      
+      // 可以通过 isNaN() 函数判断是否为 NaN
+      let b = NaN
+      console.log(b)	// true
+      ```
+
+  - ```!=```
+
+    - 不等，判断左右两个值是否不等，如果不等则返回 true，如果相等则返回 false
+
+    - 不等也会做自动的类型转换
+
+      ```javascript
+      console.log(1 != '1')	// false, 会转换
+      ```
+
+  - ```===```
+
+    - 全等，判断左右两个值是否全等，它和相等类似，只不过它不会进行自动的类型转换
+
+    - 如果两个值的类型不同，则直接返回 false
+
+      ```javascript
+      console.log(1 === '1')	// false
+      console.log(null === undefined)	// false
+      ```
+
+  - ```!==```
+
+    - 不全等，和不等类似，但是它不会进行自动的类型转换，如果两个值的类型不同，它会直接返回 true
+
+      ```javascript
+      console.log(1 !== '1')	// true
+      ```
 
 24. JS 基础 - 条件运算符
 
