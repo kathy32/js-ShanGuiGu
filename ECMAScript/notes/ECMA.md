@@ -720,6 +720,44 @@
 
 
 21. JS 基础 - 关系运算符
+  - 关系运算符：用来比较两个值之间的大小关系的
+
+  - ```>```
+
+  - ```>=```
+
+  - ```<```
+
+  - ```<=```
+
+  - 关系运算符的规则和数学中一致，用来比较两个值之间的关系，如果关系成立则返回true，关系不成立则返回false。
+
+  - 如果比较的两个值是非数值，会将其转换为Number然后再比较
+
+    ```javascript
+    console.log(1 >= true)	// true, true:1
+    console.log(1 > '0')	// true
+    console.log(1 > null)	// true,	null:0
+    
+    // 任何值和 NaN 做任何比较都是 false
+    console.log(1 > 'hello')	// false, 'hello':NaN
+    
+    console.log(true > false)	// true
+    ```
+
+  - 如果比较的两个值都是字符串，此时会比较字符串的Unicode编码，而不会转换为Number，比较中文没有意义
+
+    ```javascript
+    console.log('1' < '5')	// true
+    console.log('11' < '5')	// true, '1'<'5'
+    
+    // 如果两位一样，则比较下一位
+    console.log('bbc' < 'b')	// false
+    
+    // 注意：在比较两个字符串类型的数字时，一定要转型
+    console.log('111' < +'5')	// false
+    ```
+
 
 22. JS 基础 - Unicode 编码表
 
