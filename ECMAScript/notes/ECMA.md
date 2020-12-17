@@ -967,6 +967,82 @@
 
 
 28. JS 基础 - 练习
+  - 练习一：
+
+    ```javascript
+    /*
+    * 	从键盘输入小明的期末成绩:
+    *	当成绩为100时，'奖励一辆BMW'
+    *	当成绩为[80-99]时，'奖励一台iphone15s'
+    *	当成绩为[60-80]时，'奖励一本参考书'
+    *	其他时，什么奖励也没有
+    */
+    
+    // prompt() 可以弹出一个提示框，用户可以在文本框输入一段内容作为参数
+    let score = prompt("请输入小明的期末成绩：")
+    
+    if (score > 100 || score < 0 || isNaN(score)) {
+        return
+    }
+    
+    if (score === 100) {
+      alert('宝马')
+    } else if (score >= 80) {
+      alert('手机')        
+      } else if (score >= 60) {
+          alert('参考书')
+        } else {
+          alert('没有')
+        }
+    ```
+
+  - 练习二：
+
+    ```javascript
+    /*
+    * 	大家都知道，男大当婚，女大当嫁。那么女方家长要嫁女儿，当然要提出一定的条件： 
+    *	高：180cm以上; 富:1000万以上; 帅:500以上;
+    *	如果这三个条件同时满足，则:'我一定要嫁给他'
+    *	如果三个条件有为真的情况，则:'嫁吧，比上不足，比下有余。' 
+    *	如果三个条件都不满足，则:'不嫁！' 
+    */
+    
+    let height = prompt('请输入身高')
+    let money = prompt('财富')
+    let face = prompt('颜值')
+    
+    if (height > 180 && money > 1000 && face >500) {
+        alert('一定嫁')
+    } else if () {
+        alert('勉强嫁')     
+      } else {
+        alert('不嫁')
+      }
+    ```
+
+  - 练习三：
+
+    ```javascript
+    /*
+    * 	编写程序，由键盘输入三个整数分别存入变量num1、num2、num3，
+    * 	对他们进行排序，并且从小到大输出。
+    */
+    
+    // prompt() 返回的是 String 类型
+    let num1 = +prompt('num1:')
+    let num2 = +prompt('num2:')
+    let num3 = +prompt('num3:')
+    
+    if (num1<num2 && num1<num3) {
+      if (num2<num3) {
+        // num1,num2,num3
+      } else {
+        // num1,num3,num2
+      }
+    } else if (num2<num1 && num2<num3) {
+          // .....         
+      }
+    ```
 
 29. JS 基础 - 条件分支语句
 
