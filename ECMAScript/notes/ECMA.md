@@ -758,8 +758,18 @@
     console.log('111' < +'5')	// false
     ```
 
-
 22. JS 基础 - Unicode 编码表
+  - ```\u``` 表示 Unicode 转义编码
+
+    ```javascript
+    console.log("\u2620")
+    ```
+
+  - 网页中使用 Unicode 编码，```&#``` 编码，这里的编码是 10 进制
+
+    ```html
+    <h1 style="font-size:200px;">&#8760</h1>
+    ```
 
 23. JS 基础 - 相等运算符
 
