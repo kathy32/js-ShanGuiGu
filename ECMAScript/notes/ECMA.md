@@ -1045,6 +1045,34 @@
     ```
 
 29. JS 基础 - 条件分支语句
+  - ```switch```语句
+
+  - 语法：
+
+    ```
+    switch(条件表达式){
+      case 表达式:
+        语句...
+        break;
+      case 表达式:
+        语句...
+        break;
+      case 表达式:
+        语句...
+        break;
+      default:
+        语句...
+        break;
+      }
+    ```
+
+  - 执行流程：
+
+    - switch...case...语句在执行时，会**依次**将case后的表达式的值和switch后的表达式的值进行全等比较
+
+    - 如果比较结果为false，则继续向下比较。如果比较结果为true，则从当前case处开始向下执行代码，需要和 break 跳出结合使用
+
+    - 如果所有的case判断结果都为false，则从default处开始执行代码
 
 30. JS 基础 - switch 练习
 
