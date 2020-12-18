@@ -1161,6 +1161,72 @@
       ```
 
 32. JS 基础 - for 循环
+  - 语法：
+
+    ```
+    for (①初始化表达式 ; ②条件表达式 ; ④更新表达式) {
+      ③语句...
+    }
+    ```
+
+  - 执行流程：
+
+    - 首先执行①初始化表达式，初始化一个变量，（只会执行一次）
+
+    - 然后对②条件表达式进行求值判断，如果为 false 则终止循环
+
+    - 如果判断结果为 true，则执行③循环体
+
+    - 循环体执行完毕，执行④更新表达式，对变量进行更新。
+
+    - 更新表达式执行完毕重复②
+
+    - ```javascript
+      for (let i=0; i<10; i++) {
+        alert(i)
+      }
+      ```
+
+  - 死循环
+
+    ```
+    while(true){
+    }
+    
+    for(;;){
+    }
+    ```
+
+  - 练习一：打印1-100之间所有7的倍数的个数及总和
+
+    ```javascript
+    let sum = 0
+    let count = 0
+    for (let i=1; i<=100; i++) {
+      if (i % 7 === 0) {
+        //console.log(i)
+        sum += i
+        count++
+      }
+    }
+    console.log(sum)
+    console.log(count)
+    ```
+
+  - 练习二：水仙花数指一个3位数，它的每个位上的数字的3次幂之和等于它本身。
+
+    ```javascript
+    // 如：1^3 + 5^3 + 3^3 = 153
+    for (var i=100; i<1000; i++) {
+      var hun = parseInt(i/100)
+      var ten = parseInt((i-hun*100)/10)
+      var digit = i%10
+      
+      if ((Math.pow(hun,3) + Math.pow(ten,3) + Math.pow(digit,3)) === i) {
+      console.log(i)
+      }
+    }
+    ```
 
 33. JS 基础 - 质数练习
 
