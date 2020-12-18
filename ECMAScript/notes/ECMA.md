@@ -1075,6 +1075,23 @@
     - 如果所有的case判断结果都为false，则从default处开始执行代码
 
 30. JS 基础 - switch 练习
+  题目：大于60为合格，否则不合格
+
+  ```javascript
+  let score = 99
+  switch (parseInt(score/10)) {
+    case 10:
+    case 9:
+    case 8:
+    case 7:
+    case 6:
+      console.log('合格')
+      break
+    default:
+      console.log('不合格')
+      break
+  }
+  ```
 
 31. JS 基础 - while 循环
 
