@@ -1277,6 +1277,104 @@
     ```
 
 35. JS 基础 - break 和 continue
+  - ```break``` 关键字用来退出 switch 或循环语句，不能用在 if 中
+
+    ```javascript
+    let i = 1
+    if (i == 1) break
+    // 报错
+    ```
+
+  - break 会立即终止离他最近的循环语句
+
+    ```javascript
+    for (let i=1; i<=5; i++) {
+      console.log('外层循环'  = i)
+      for (let j=1; j<=5; j++) {	// 被终止
+        break
+        console.log('内层循环' + j)
+      }
+    }
+    // 外层循环：1 2 3 4 5
+    ```
+
+  - ```label``` 循环语句，可以在 break 后跟着一个 label，结束指定的循环
+
+    ```javascript
+    outer:
+    for (let i=1; i<=5; i++) {
+      console.log('外层循环'  = i)
+      for (let j=1; j<=5; j++) {	// 被终止
+        break outer
+        console.log('内层循环' + j)
+      }
+    }
+    // 外层循环：1
+    ```
+
+  - ```continue``` 关键字跳过**当次**循环，对最近的循环起作用
+
+    ```javascript
+    for (let i=0; i<5; i++) {
+      if (i === 2)  continue
+      console.log(i)
+    }
+    // 0 1 3 4
+    
+    for (let i=0; i<5; i++) {
+      if (i === 2)  break
+      console.log(i)
+    }
+    // 0 1
+    ```
+
+  - 质数练习答案改进
+
+    ```javascript
+    let isPrime = function (num) {
+      console.time('test')
+      if (num <= 1) return
+      for (let i=2; i<=num; i++) {
+        var flag = true // 此处必须为 var 不能是 let 块级作用域
+        for (let j=2; j<i; j++) {
+          if (num % i === 0) {
+            flag = false
+            break
+          }
+        }
+      }
+      if (flag) console.log(num + '是质数')
+      else console.log(num + '不是质数')
+      console.timeEnd('test')
+    }
+    isPrime(10000)
+    // 10000不是质数
+    // test: 42.134ms
+    
+    // ---------------------------------------
+    
+    // 增加  j<Math.sqrt(i)
+    let isPrime = function (num) {
+      console.time('test')
+      if (num <= 1) return
+      for (let i=2; i<=num; i++) {
+        var flag = true // 此处必须为 var 不能是 let 块级作用域
+        for (let j=2; j<Math.sqrt(i); j++) {
+          if (num % i === 0) {
+            flag = false
+            break
+          }
+        }
+      }
+      if (flag) console.log(num + '是质数')
+      else console.log(num + '不是质数')
+      console.timeEnd('test')
+    }
+    
+    isPrime(10000)
+    // 10000不是质数
+    // test: 13.484ms
+    ```
 
 36. JS 基础 - 对象的简介
 
