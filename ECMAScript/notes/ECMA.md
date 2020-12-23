@@ -1229,6 +1229,26 @@
     ```
 
 33. JS 基础 - 质数练习
+  - 接收一个输入，判断其是否为质数
+
+  ```javascript
+  let isPrime = function (num) {
+    let flag = true
+
+    if (num <= 1) return
+
+    for (let i=2; i<num; i++) {
+      if (num % i === 0) {
+        flag = false
+      }
+    }
+
+    if (flag) console.log(num + '是质数')
+    else console.log(num + '不是质数')
+  }
+
+  isPrime(10)
+  ```
 
 34. JS 基础 - 嵌套的 for 循环
 
