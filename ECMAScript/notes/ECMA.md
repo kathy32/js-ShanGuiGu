@@ -1251,6 +1251,30 @@
   ```
 
 34. JS 基础 - 嵌套的 for 循环
+  - ```javascript
+    //*
+    //**
+    //***
+    //****
+    //*****
+    for (let i=0; i<5; i++) {
+      for (let j=0; j<i+1; j++) {
+        document.write('*')
+      }
+      document.write('<br />')
+    }
+    ```
+
+  - 乘法表
+
+    ```javascript
+    for (let i=1; i<=9; i++) {
+      for (let j=1; j<=i; j++) {
+        document.write(j + '*' + i + '=' + j*i)
+      }
+      document.write('<br />')
+    }
+    ```
 
 35. JS 基础 - break 和 continue
 
