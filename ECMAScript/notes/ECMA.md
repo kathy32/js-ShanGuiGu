@@ -1455,6 +1455,36 @@
 
 
 39. JS 基础 - 基本数据类型和引用数据类型
+  - 引例：
+
+    ```javascript
+    // 基本数据类型每个变量对应一个单独的存储单元，互不干扰
+    let a = 1
+    let b = a
+    a++
+    console.log(a)	// 2
+    console.log(b)	// 1
+    
+    // 引用数据类型数指针类型，指向同一个地址变量，相互影响
+    let obj1 = new Object()
+    obj1.name = 'lokit'
+    let obj2 = obj1
+    obj1.name = 'yico'
+    console.log(obj1.name)	// yico
+    console.log(obj2.name)	// yico
+    
+    // 改变一个引用类型的指向并不会影响到另一个变量的指向
+    obj2 = null
+    console.log(obj1)	// [object Object]
+    console.log(obj2)	// null
+    ```
+
+  - 基本数据类型的数据，变量是直接保存的它的值。变量与变量之间是互相独立的，修改一个变量不会影响其他的变量。
+
+  - 引用数据类型的数据，变量是保存的对象的引用（内存地址）。如果多个变量指向的是同一个对象，此时修改一个变量的属性，会影响其他的变量。
+
+  - 比较两个变量时，对于基本数据类型，比较的就是**值**。对于引用数据类型比较的是**地址**，地址相同才相同。
+
 
 40. JS 基础 - 对象字面量
 
