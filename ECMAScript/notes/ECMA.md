@@ -1395,6 +1395,32 @@
     - 自定义对象：开发人员自己创建的对象
 
 37. JS 基础 - 对象的基本操作
+  - 创建对象：
+
+  - 方式一：```new``` 关键字，构造函数 ```constructor``` 创建
+
+  ```javascript
+  // 使用 typeof 检查一个对象 obj 时，会返回object
+  var obj = new Object();
+
+  // 向对象中添加属性,语法：对象.属性名 = 属性值;
+  obj.name = 'lokit'
+
+  // 读取属性
+  console.log(obj.name)
+
+  // 修改属性值
+  obj.name = 'yico'
+
+  // 删除属性
+  delete obj.name
+  ```
+
+  - 方式二：
+
+    ```javascript
+    var obj = {};
+    ```
 
 38. JS 基础 - 属性名和属性值
 
