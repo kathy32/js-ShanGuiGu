@@ -1562,6 +1562,25 @@
 
 
 43. JS 基础 - 函数的返回值
+  - 返回值，就是函数执行的结果
+
+  - 使用 return 来设置函数的返回值。
+
+  - 语法：```return``` 值;
+
+  - 该值就会成为函数的返回值，可以通过一个变量来接收返回
+
+  - return 后边的代码都不会执行，一旦执行到 return 语句时，函数将会立刻退出。
+
+  - return 后可以跟任意类型的值，可以是基本数据类型，也可以是一个对象
+
+  - 如果 return 后不跟值，或者是不写 return 则函数默认返回 undefined。
+
+    ```javascript
+    // alert() 没有返回值
+    let res = alert('lokit')	// 能弹出来
+    console.log(res)	// undefined
+    ```
 
 44. JS 基础 - 实参可以是任何值
 
