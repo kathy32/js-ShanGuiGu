@@ -1583,6 +1583,45 @@
     ```
 
 44. JS 基础 - 实参可以是任何值
+  - 练习：定义一个函数，判断一个数是否为偶数
+
+    ```javascript
+    let isEven = function (num) {
+      return num % 2 === 0
+    }
+    isEven(11)	// false
+    ```
+
+  - 参数，函数的实参也可以是任意的数据类型。当需要的参数过多，可以将参数封装为一个对象
+
+    ```javascript
+    let sayHello = function (p) {
+      console.log(p.name + p.height)
+    }
+    const person = {
+      name: 'lokit',
+      age: 25,
+      height: 185
+    }
+    sayHello(person)
+    ```
+
+  - 实参也可以是一个函数
+
+    ```javascript
+    function fun (f) {
+      f(obj)
+    }
+    // sayHello - 函数对象，相当于直接使用 函数对象
+    fun(syaHello)	// lokit185
+    
+    // sayHello() - 调用函数，相当于使用函数的 返回值
+    fun(sayHello())
+    
+    fun(function(){
+      alert('hello')
+    })
+    ```
 
 45. JS 基础 - 返回值的类型
 
