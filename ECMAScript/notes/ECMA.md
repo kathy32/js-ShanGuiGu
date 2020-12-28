@@ -1651,6 +1651,37 @@
     ```
 
 47. JS 基础 - 方法
+  - 对象的**属性值**可以是任意数据类型，如函数
+
+    ```javascript
+    var obj = new Object()
+    obj.name = 'lokit'
+    obj.sayName = function () {
+      console.log(obj.name)
+    }
+    ```
+
+  - 当一个对象的**属性**是一个函数时，我们称这个函数是该对象的**方法** method
+
+  - 方法和函数区别：
+
+    - ```对象.方法名()```
+    - ```函数名()```
+
+  - 枚举对象中的属性：```for in```
+
+    ```javascript
+    const person = {
+      name: 'lokit',
+      age: 27
+    }
+    // 每次执行时，都会将对对象中的属性名字赋值给变量
+    for (let p in person) {
+      console.log(p)	// name,age(属性名)
+      console.log(person[p]) // lokit,29(属性值)
+      console.log(person.p)	// 不合法，person 里面没有 p 这个属性名，undefined
+    }
+    ```
 
 48. JS 基础 - 全局作用域
 
