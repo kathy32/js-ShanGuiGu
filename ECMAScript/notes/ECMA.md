@@ -1624,6 +1624,23 @@
     ```
 
 45. JS 基础 - 返回值的类型
+  - break、continue和return
+
+    - break - 退出循环
+    - continue - 跳过当次循环
+    - return - 退出函数
+
+  - 函数返回类型为函数时：
+
+    ```javascript
+    function f3 () {
+      function f4 () {
+        console.log('lokit')
+      }
+      return f4
+    }
+    f3()()	// 调用f4，输出 lokit
+    ```
 
 46. JS 基础 - 立即执行函数
 
