@@ -1685,19 +1685,74 @@
 
 48. JS 基础 - 全局作用域
   - 作用域简单来说就是一个变量的作用范围。
+
+    ```javascript
+    function f () {
+      var a = 1
+    }
+    f()
+    console.log(a)	// 报错，a is not defined
+    ```
+
   - 在 JS 中作用域分成两种：
+
     - 全局作用域
+
       - 直接在 script 标签中编写的代码都运行在全局作用域中
+
       - 全局作用域在打开页面时创建，在页面关闭时销毁
+
       - 全局作用域中有一个全局对象 window，window 对象由浏览器提供，可以在页面中直接使用，它代表的是整个的浏览器的窗口。
-      - 在全局作用域中创建的变量都会作为 window 对象的属性保存，在全局作用域中创建的函数都会作为 window 对象的方法保存
+
+      - 在全局作用域中创建的变量都会作为 window 对象的**属性**保存，在全局作用域中创建的函数都会作为 window 对象的**方法**保存
+
+        ```javascript
+        var a = 3
+        console.log(window.a)	// 3
+        
+        function f () {
+          console.log('i am f')
+        }
+        window.f()	// i am f
+        
+        window.alert('lokit')	// lokit
+        ```
+
       - 在全局作用域中创建的变量和函数可以在页面的任意位置访问，在函数作用域中也可以访问到全局作用域的变量。
+
       - 尽量不要在全局中创建变量	
-    - 函数作用域
-      - 函数作用域是函数执行时创建的作用域，每次调用函数都会创建一个新的函数作用域
-      - 函数作用域在函数执行时创建，在函数执行结束时销毁
-      - 在函数作用域中创建的变量，不能在全局中访问
-      - 当在函数作用域中使用一个变量时，它会先在自身作用域中寻找，如果找到了则直接使用，如果没有找到则到上一级作用域中寻找，如果找到了则使用，找不到则继续向上找
+
+        ```javascript
+        var a = 10
+        console.log(a)	// 10
+        
+        b = 10
+        console.log(b)	// 10, window.b
+        
+        console.log(c)	// undefined, 变量声明提升，但是不会赋值
+        var c = 10
+        
+        console.log(d)	// 报错，d is not defined, 无变量声明提升
+        d = 10
+        ```
+
+        
+
+    - 函数声明提前创建
+
+      ```javascript
+      f1()	// f1, 声明提前创建
+      f2()	// 报错，f2 is not a function, 为 undefined 
+      
+      // 函数声明式
+      function f1 () {
+        console.log('f1')
+      }
+      // 函数表达式
+      var f2 = function () {
+        console.log('f2')
+      }
+      ```
 
 49. JS 基础 - 函数作用域
 
