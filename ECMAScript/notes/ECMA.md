@@ -1755,6 +1755,68 @@
       ```
 
 49. JS 基础 - 函数作用域
+  - 函数作用域是函数执行时创建的作用域，每次调用函数都会创建一个新的函数作用域
+
+  - 函数作用域在函数执行时创建，在函数执行结束时销毁
+
+  - 在函数作用域中创建的变量，不能在全局中访问，私有变量。全局无法到函数
+
+    ```javascript
+    function f () {
+      var b = 10
+    }
+    console.log(b)	// b is not defined
+    ```
+
+    
+
+  - 当在函数作用域中使用一个变量时，它会先在自身作用域中寻找，如果找到了则直接使用，如果没有找到则到上一级作用域中寻找，如果找到了则使用，找不到则继续向上找。函数可以到全局
+
+    ```javascript
+    var a = 10
+    function f1 () {
+      var a = 'f1中的a'
+      function f2 () {
+        console.log(a)	// f1中的a
+        console.log(window.a)	// 10
+      }
+      f2()	
+      console.log(a)	// f1中的a
+    }
+    console.log(a)	// 10
+    ```
+
+    ```javascript
+    // 变量提升也适用于函数作用域
+    function f () {
+      console.log(a)
+      var a = 10
+    }
+    f()	// undefined
+    ```
+
+  - 函数作用域中，不用 var 的变量是全局作用域的变量
+
+    ```javascript
+    var b = 20
+    function f1 () {
+      console.log(b)	// 20，作用域链
+      b = 10
+    }
+    f1()
+    console.log(b)	// 10
+    ```
+
+  - 定义形参就相当于在函数中声明了变量
+
+    ```javascript
+    var c = 10
+    function f1 (c) {
+      // 相当于加了 var c
+      console.log(c)
+    }
+    f1()	// undefined
+    ```
 
 50. JS 基础 - debug
 
