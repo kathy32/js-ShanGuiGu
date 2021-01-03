@@ -1816,6 +1816,14 @@
       console.log(c)
     }
     f1()	// undefined
+
+    var a = 123
+    function f (a) {
+      console.log(a)	// undefined
+      a = 456	// 修改形参值
+    }
+    f()
+    console.log(a)	// 123
     ```
 
 50. JS 基础 - debug
