@@ -2040,6 +2040,74 @@
   
 
 57. JS 基础 - 数组简介
+- 内建对象，宿主对象，自定义对象
+
+- 数组也是一个对象，是一个用来存储数据的对象
+
+  - 和 Object 类似，但是它的存储效率比普通对象要高
+  - 数组中保存的内容我们称为**元素**
+  - 数组使用**索引**（index）来操作元素
+  - 索引指由**0**开始的整数
+  - 索引类似于对象的属性概念
+
+- 数组的操作：
+
+  - 创建数组
+
+    ```javascript
+    var arr = new Array();
+    var arr = [];
+    console.log(typeof arr)	// object
+    ```
+
+  - 向数组中添加元素
+
+    ```javascript
+    // 数组对象[索引] = 值;
+    arr[0] = 123;
+    arr[1] = "hello";
+    ```
+
+  - 读元素
+
+    ```javascript
+    console.log(arr[0])	// 123
+    console.log(arr[3])	// undefined
+    ```
+
+  - 创建数组时直接添加元素
+
+    ```javascript
+    var arr = [123,"hello",true,null];
+    ```
+
+  - 获取和修改数组的长度
+
+    - 使用 ```length``` **属性**来操作数组的长度
+    - 对于**连续**的数组，length获取到的就是数组中元素的个数
+    - length 获取到的是数组的最大索引 +1，适用于非连续数组
+    - 如果修改后的 length 大于原长度，则多出的部分会空出来
+    - 如果修改后的 length 小于原长度，则原数组中多出的元素会被删除
+
+    ```javascript
+    // 获取
+    var arr = new Array()
+    arr[10] = 1
+    console.log(arr.length)	// 11
+    
+    // 修改
+    arr.length = 3
+    console.log(arr)	// [,,]
+    ```
+
+  - 向数组的最后添加元素
+
+    ```javascript
+    // 数组[数组.length] = 值;
+    arr[arr.length] = 20
+    ```
+
+    
 
 58. JS 基础 - 数组字面量
 
