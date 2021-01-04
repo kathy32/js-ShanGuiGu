@@ -2006,6 +2006,20 @@
       ```
 
 55. JS 基础 - toString()
+  - 当我们直接在页面中打印一个对象时，事件上是输出的对象的 ```toString()``` 方法的返回值
+
+  ```javascript
+  console.log(p1)	// [object Object]
+  console.log(p1.__proto__.__proto__.hasOwnProperty('toString'))	// true
+
+  // 更改
+  Person.prototype.toString = function () {
+    return `Person[name=${this.name},age=${this.age}]`
+  }
+  console.log(p1)	//Person[name='lokit',age=27]
+  ```
+
+
 
 56. JS 基础 - 垃圾回收
 
