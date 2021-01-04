@@ -1955,6 +1955,55 @@
 
 
 54. JS 基础 - 原型对象
+  - 创建一个函数以后，解析器都会默认在函数中添加一个属性 ```prototype```
+
+    - prototype 属性指向的是一个对象，这个对象我们称为**原型对象**。
+
+  - 当函数作为构造函数使用，它所创建的对象中都会有一个隐含的属性执行该原型对象
+
+    - 这个隐含的属性可以通过 ```对象.__proto__``` 来访问。
+
+  - 原型对象就相当于一个**公共的区域**，凡是通过同一个构造函数创建的对象他们通常都可以访问到相同的原型对象。
+
+    - 我们可以将对象中共有的属性和方法统一添加到原型对象中，
+
+    - 这样我们只需要添加一次，就可以使所有的对象都可以使用。
+
+      ```javascript
+      function Person (name, age) {
+        this.name = name
+        this.age = age
+      }
+      // 公共区域，所有同个类的实例都可以访问到这个原型对象中的共有内容
+      Person.prototype.sayName = function () {
+        console.log(this.name)
+      }
+      var p1 = new Person('lokit',27)
+      console.log(p1.__proto__ == Person.prototype)	// true
+      p1.sayName()	// lokit
+      ```
+
+      
+
+  - 当我们去访问对象的一个属性或调用对象的一个方法时，它会先自身中寻找，
+
+    - 如果在自身中找到了，则直接使用。
+    - 如果没有找到，则去原型对象中寻找，如果找到了则使用，
+    - 如果没有找到，则去原型的原型中寻找，依此类推。直到找到Object的原型为止，Object的原型的原型为 null，
+    - 如果依然没有找到则返回 undefined 
+
+  - 检查对象中是否有某个属性方法：
+
+    - ```in``` 检查方法，对象中没有，原型中有，也会返回 true
+
+    - ```hasOwnProperty``` 检查对象 **自身** 中是否含有某个属性
+
+      ```javascript
+      console.log(p1.hasOwnProperty('name'))	// true
+      console.log(p1.hasOwnProperty('hasOwnProperty'))	// false，在原型的原型Object对象的属性
+      console.log(p1.__proto__.__proto__.hasOwnProperty('hasOwnProperty'))	// true
+      console.log(p1.__proto__.__proto__.__proto__)	// null
+      ```
 
 55. JS 基础 - toString()
 
