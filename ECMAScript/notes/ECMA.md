@@ -2137,6 +2137,49 @@
   
 
 59. JS 基础 - 数组的四个方法
+  - ```push()```
+
+    -  用来向数组的末尾添加一个或多个元素，并**返回数组新的长度**
+
+    - 语法：```数组.push(元素1,元素2,元素N)```
+
+      ```javascript
+      var arr = [1,4,2,5]
+      var res = arr.push(1,2,5)
+      console.log(res)	// 7
+      ```
+
+  - ```pop()```
+
+    - 用来删除数组的最后一个元素，并**返回被删除的元素**
+
+      ```javascript
+      var arr = [1,4,2,5]
+      var res = arr.pop()
+      console.log(res)	// 5
+      ```
+
+  - ```unshift()```
+
+      - 向数组的前边添加一个或多个元素，并**返回数组的新的长度**
+
+        ```javascript
+        var arr = [1,4,2,5]
+        var res = arr.unshift('lokit','yico')
+        console.log(res)	// 6
+        console.log(arr)	// ['lokit','yico',1,4,2,5]
+        ```
+
+  - ```shift()```
+
+      - 删除数组的前边的一个元素，并**返回被删除的元素**
+
+        ```javascript
+        var arr = [1,4,2,5]
+        var res = arr.shift()
+        console.log(res)	// 1
+        ```
+        
 
 60. JS 基础 - 数组的遍历
 
