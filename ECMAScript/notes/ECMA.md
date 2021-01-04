@@ -2110,6 +2110,31 @@
     
 
 58. JS 基础 - 数组字面量
+- 字面量创建数组
+
+  ```javascript
+  var arr = []
+  ```
+
+- 创建时指定数组元素
+
+  ```javascript
+  var arr = [123,"hello",true,null];
+  ```
+
+- 构造函数创建
+
+  ```javascript
+  var arr = new Array(1,2,3,6)
+  
+  // 区别
+  arr = [10]	// 元素10
+  arr = new Array(10)	// 长度为10
+  ```
+
+- 数组的元素可以是任意类型
+
+  
 
 59. JS 基础 - 数组的四个方法
 
