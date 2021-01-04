@@ -1896,6 +1896,63 @@
   ```
 
 53. JS 基础 - 构造函数
+  -  构造函数是专门用来创建对象的函数
+
+  - 构造函数和普通函数的区别就是调用方式的不同：
+
+    - 普通函数是直接调用
+    - 构造函数需要使用 new 关键字来调用
+
+  - 构造函数的执行流程：
+
+      1. 创建一个新的对象
+      2. 将新的对象作为函数的上下文对象 this，在构造函数中可以使用 this 来引用新建的对象
+      3. 执行函数中的代码
+      4. 将新建的对象返回
+
+  - 一个构造函数我们也可以称为一个 **类**
+
+    - 通过一个构造函数创建的对象，我们称该对象时这个构造函数的**实例**
+
+    - ```instanceof``` 用来检查一个对象是否是一个类的实例
+
+      ```javascript
+      function Person (name, age) {
+        this.name = name
+        this.age = age
+        this.sayName = function () {
+          console.log(this.name)
+        }
+      }
+      var p1 = new Person('lokit',28)
+      var p2 = new Person('yico',25)
+      console.log(p1)	// Person{name:'lokit',age:28}
+      console.log(p1 instanceof Person)	// true
+      // Object 是所有对象的祖先，所以任何对象和Object做instanceof都会返回true
+      console.log(p1 instanceof Object)	// true
+      
+      function Dog (name, age) {
+        this.name = name
+        this.age = age
+      }
+      var d1 = new Dog('mantou',3)
+      console.log(d1)	// Dog{name:mantou,age:3}
+      ```
+
+    - 改进：构造函数每执行一次就会创建一个唯一的 sayName 方法，浪费空间。改进方法：创建全局方法
+
+      ```javascript
+      function Person (name, age) {
+        this.name = name
+        this.age = age
+        this.sayName = f
+      }
+      // 缺点：污染了全局作用域的命名空间，也不安全，不适合多人开发，改进：原型
+      function f () {
+        console.log(this.name)
+      }
+      ```
+
 
 54. JS 基础 - 原型对象
 
