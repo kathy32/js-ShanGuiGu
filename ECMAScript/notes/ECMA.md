@@ -1832,6 +1832,49 @@
   source -> 点击断点 -> 刷新
 
 51. JS 基础 - this
+  - 上下文对象
+
+  - 我们每次调用函数时，解析器都会将一个上下文对象作为隐含的参数传递进函数，使用 this 来引用上下文对象
+
+    - this 的不同的情况:
+      - 以**函数**的形式调用时，this 是 window
+      - 以**方法**的形式调用时，this 就是调用方法的对象
+      - 以**构造函数**的形式调用时，this 就是新创建的对象
+
+    ```javascript
+    // this 指向的是一个对象，这个对象我们称为函数执行的上下文对象
+    function f () {
+      console.log(this)	// [object Window]
+    }
+    f()	// 即 Window.f()
+    
+    // 根据函数的 调用 形式不同，this 的值也不同
+    var obj = {
+      name: 'lokit',
+      sayName: f
+    }
+    console.log(obj.sayName == f)	// true
+    obj.sayName()	// [object Object],即 obj
+    
+    
+    // 实例
+    var name = '全局name'
+    function f () {
+      console.log(this.name)
+    }
+    obj1 = {
+      name: 'lokit',
+      sayName: f
+    }
+    obj2 = {
+      name: 'yico',
+      sayName: f
+    }
+    f()	// 全局name
+    obj1.sayName()	// lokit
+    obj2.sayName()	// yico
+    ```
+
 
 52. JS 基础 - 使用工厂方法创建对象
 
