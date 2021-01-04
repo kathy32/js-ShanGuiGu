@@ -1877,6 +1877,23 @@
 
 
 52. JS 基础 - 使用工厂方法创建对象
+  - 批量创建对象
+
+  ```javascript
+  function creatPerson (name, gender, age) {
+    var obj = new Object()
+    obj.name = name
+    obj.gender = gender
+    obj.age = age
+    obj.sayName = function () {
+      console.log(this.name)
+    }
+    return obj
+  }
+  var obj1 = creatPerson('lokit', 'man', 27)
+  var obj2 = creatPerson('yico', 'felman', 25)
+  obj1.sayName()	// lokit
+  ```
 
 53. JS 基础 - 构造函数
 
