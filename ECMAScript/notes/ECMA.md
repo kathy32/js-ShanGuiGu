@@ -2531,9 +2531,38 @@
     fun()
     ```
 
+ - 类数组转数组
+
+  - ```Array.prototype.slice.call()```
+
+  - ```Array.from()```
+
+  - ```...```
+
+    ```javascript
+    function fun () {
+      var args = Array.prototype.slice.call(arguments)
+      console.log(Array.isArray(args))  // true
+    }
+    fun()
     
+    function fun () {
+      var args = Array.from(arguments)
+      console.log(Array.isArray(args))  // true
+    }
+    fun()
+    
+    function fun () {
+      var args = [...arguments]
+      console.log(Array.isArray(args))  // true
+    }
+    fun()
+    ```
+
+   
 
 68. JS 基础 - Date 对象
+
 
 69. JS 基础 - Math
 
