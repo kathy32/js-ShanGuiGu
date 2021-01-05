@@ -2319,6 +2319,98 @@
 
 
 65. JS 基础 - 数组的剩余方法
+  - ```reverse()```
+
+    - 可以用来反转一个数组，它**会**对原数组产生影响
+
+      ```javascript
+      var arr = ['lokit', 'yico', 'neymar', 'kathy']
+      var res = arr.reverse()
+      console.log(arr)  // [ 'kathy', 'neymar', 'yico', 'lokit' ]
+      console.log(res)  // [ 'kathy', 'neymar', 'yico', 'lokit' ]
+      ```
+
+      
+
+  - ```concat()```
+
+    - 可以连接两个或多个数组，它**不会**影响原数组，而是**新数组**作为返回值**返回**
+
+      ```javascript
+      var arr = ['lokit', 'yico', 'neymar', 'kathy']
+      var res = arr.concat('meisi','liangzai')
+      console.log(arr)  // [ 'lokit', 'yico', 'neymar', 'kathy' ]
+      console.log(res)  // [ 'lokit', 'yico', 'neymar', 'kathy', 'meisi', 'liangzai' ]
+      ```
+
+      
+
+  - ```join()```
+
+    - 可以将一个数组转换为一个**字符串**
+
+    - **不会**影响原数组
+
+    - 参数：
+
+      - 需要一个字符串作为参数，这个字符串将会作为连接符来连接数组中的元素
+      - 如果不指定连接符则默认使用```,```
+
+    - ```javascript
+      var arr = ['lokit', 'yico', 'neymar', 'kathy']
+      var res = arr.join()
+      console.log(arr)  // [ 'lokit', 'yico', 'neymar', 'kathy' ]
+      console.log(res)  // lokit,yico,neymar,kathy
+      
+      var res = arr.join('')
+      console.log(res)  // lokityiconeymarkathy
+      
+      var res = arr.join('-')
+      console.log(res)  // lokit-yico-neymar-kathy
+      ```
+
+      
+
+  - ```sort()```
+
+    - 可以对一个数组中的内容进行排序，默认是按照```Unicode```编码进行排序
+
+      ```javascript
+      // 以下结果不符合期望
+      var arr = [3,2,14,5,6,2]
+      var res = arr.sort()
+      console.log(arr)  // [ 14, 2, 2, 3, 5, 6 ]
+      console.log(res)  // [ 14, 2, 2, 3, 5, 6 ]
+      ```
+
+      
+
+    - 调用以后，**会**直接修改原数组。
+
+    - 可以自己指定排序的规则，需要一个回调函数作为参数（升序）：
+
+      - 大于0，交换
+      - 小于0，不交换
+      - 等于0，不交换（两值相等）
+
+      ```javascript
+      function(a,b){
+      
+        //升序排列
+        return a-b;
+      
+        //降序排列
+        return b-a;
+      }
+      ```
+
+      ```javascript
+      var arr = [3,2,14,5,6,2]
+      var res = arr.sort((a,b) => a-b)
+      console.log(res)  // [ 2, 2, 3, 5, 6, 14 ]
+      ```
+
+      
 
 66. JS 基础 - call 和 apply
 
