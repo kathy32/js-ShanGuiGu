@@ -2182,8 +2182,38 @@
         
 
 60. JS 基础 - 数组的遍历
+  - 遍历数组就是将数组中元素都获取到
+
+  - 一般情况我们都是使用for循环来遍历数组：
+
+    ```javascript
+    for(var i=0 ; i<arr.length ; i++){
+      //arr[i]
+    }
+    ```
+
+    
 
 61. JS 基础 - 数组练习
+  - 获取年龄大于18的人群
+
+  ```javascript
+  var arr = [{name:'lokit',age:27},{name:'yico',age:16},{name:'neymar',age:28}]
+
+  let getAdult = function (arr) {
+    var res = []
+    for (let i=0; i<arr.length; i++) {
+      var p = arr[i]
+      if (p.age>18) {
+        res.push(p)
+      }
+    }
+    return res
+  }
+  console.log(getAdult(arr))	// [ { name: 'lokit', age: 27 }, { name: 'neymar', age: 28 } ]
+  ```
+
+
 
 62. JS 基础 - forEach
 
