@@ -2496,6 +2496,42 @@
       
 
 67. JS 基础 - arguments
+  - arguments 和 this 类似，都是函数中的**隐含的参数**
+
+  - arguments 是一个**类数组**元素
+
+    ```javascript
+    function fun () {
+      console.log(arguments instanceof Array) // false
+      console.log(Array.isArray(arguments)) // false
+    }
+    fun()
+    ```
+
+    
+
+  - 它用来封装函数执行过程中的**实参**，所以即使不定义形参，也可以通过 arguments 来使用实参
+
+    ```javascript
+    function fun () {
+      console.log(arguments[0]) // 3
+      console.log(arguments.length)   // 2
+    }
+    fun(3,2)
+    ```
+
+    
+
+  - arguments 中有一个属性 ```callee``` 表示当前执行的函数对象
+
+    ```javascript
+    function fun () {
+      console.log(arguments.callee === fun) // true
+    }
+    fun()
+    ```
+
+    
 
 68. JS 基础 - Date 对象
 
