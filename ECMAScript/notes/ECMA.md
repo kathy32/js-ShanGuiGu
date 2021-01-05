@@ -2562,7 +2562,137 @@
    
 
 68. JS 基础 - Date 对象
+  - 日期的对象，在 JS 中通过 Date 对象来表示一个时间
 
+  - 创建对象
+
+    - 创建一个**当前**的时间对象
+
+      ```javascript
+      var d = new Date()
+      ```
+
+      - 创建一个**指定**的时间对象
+
+        ```javascript
+        var d = new Date("月/日/年 时:分:秒");
+        ```
+
+  - 方法
+
+      - ```getDate()```
+
+        - 当前日期对象是几日（1-31）
+
+          ```javascript
+          var d = new Date('6/4/2020 10:00:00')
+          var day = d.getDate() // 4
+          console.log(day)
+          ```
+
+          
+
+      - ```getDay() ```
+
+        - 返回当前日期对象时周几（0-6）
+
+        - 0 周日
+
+        - 1 周一 
+
+          ```javascript
+          var d = new Date('6/4/2020 10:00:00')
+          var day = d.getDay() // 4,周四
+          console.log(day)
+          ```
+
+          
+
+      - ```getMonth()```
+
+        - 返回当前日期对象的月份（0-11）
+
+        - 0 一月 
+
+        - 1 二月
+
+          ```javascript
+          var d = new Date('6/4/2020 10:00:00')
+          var day = d.getMonth() // 5,六月
+          console.log(day)
+          ```
+
+          
+
+    - ```getFullYear()```
+
+      -  从 Date 对象以四位数字返回年份
+
+        ```javascript
+        var d = new Date('6/4/2020 10:00:00')
+        var day = d.getFullYear() // 2020
+        console.log(day)
+        ```
+
+        
+
+    - ```getHours()```
+
+      - 返回 Date 对象的小时 (0 ~ 23)。
+
+        ```javascript
+        var d = new Date('6/4/2020 10:00:00')
+        var day = d.getHours() // 10
+        console.log(day)
+        ```
+
+        
+
+    - ```getMinutes()```
+
+      - 返回 Date 对象的分钟 (0 ~ 59)。 
+
+    - ```getSeconds() ```
+
+      - 返回 Date 对象的秒数 (0 ~ 59)。
+
+    - ```getMilliseconds() ```
+
+      - 返回 Date 对象的毫秒(0 ~ 999)。 
+
+    - ```getTime()```
+
+      - 返回当前日期对象的时间戳
+
+      - 时间戳，指的是从1970年月1日 0时0分0秒，到现在时间的**毫秒数**
+
+      - 计算机底层保存时间都是以时间戳的形式保存的。
+
+        ```javascript
+        var d = new Date('6/4/2020 10:00:00')
+        var day = d.getTime() // 1591236000000
+        console.log(day)
+        ```
+
+        
+
+    - ```Date.now()```
+
+      - 可以获取当前代码执行时的时间戳
+
+        ```javascript
+        var start = Date.now()
+        
+        for (let i=0; i<100; i++) {
+          console.log(i)
+        }
+        
+        var end = Date.now()
+        
+        console.log(end-start)  // 14，毫秒
+        ```
+
+        
 
 69. JS 基础 - Math
 
