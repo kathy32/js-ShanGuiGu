@@ -2695,6 +2695,91 @@
         
 
 69. JS 基础 - Math
+  - Math属于一个工具类，它**不需要我们创建对象**，它里边封装了属性运算相关的常量和方法
+
+  - 我们可以直接使用它来进行数学运算相关的操作
+
+  - 属性：
+
+    - 圆周率
+
+    ```javascript
+    Math.PI;            // 返回 3.141592653589793
+    ```
+
+    
+
+  - 方法：
+
+    - 绝对值运算
+
+      ```javascript
+      Math.abs(-4.7);     // 返回 4.7
+      ```
+
+    - 向上取整
+
+      ```javascript
+      Math.ceil(6.4);     // 返回 7
+      Math.ceil(1.0);			// 返回 1
+      ```
+
+    - 向下取整
+
+      ```javascript
+      Math.floor(2.7);    // 返回 2
+      ```
+
+    - 四舍五入取整
+
+      ```javascript
+      Math.round(6.8);    // 返回 7
+      Math.round(2.3);    // 返回 2
+      ```
+
+    - 随机数：
+
+      - 生成一个0-1之间的随机数
+
+      - 生成一个x-y之间的随机数
+
+      - ```Math.round(Math.random()*(y-x)+x);```
+
+        ```javascript
+        Math.random();     // 返回随机数
+        
+        // 0-10
+        console.log(Math.round(Math.random()*10))
+        
+        // 1-30
+        console.log(Math.round(Math.random()*29)+1)
+        ```
+
+    - 求x的y次幂
+
+      ```javascript
+      Math.pow(8, 2); // 返回 64
+      ```
+
+    - 对一个数进行开方
+
+      ```javascript
+      Math.sqrt(64);      // 返回 8
+      ```
+
+    - 求多个数中最大值
+
+      ```javascript
+      Math.max(0, 450, 35, 10, -8, -300, -78);  // 返回 450
+      ```
+
+    - 求多个数中的最小值
+
+      ```javascript
+      Math.min(0, 450, 35, 10, -8, -300, -78);  // 返回 -300
+      ```
+
+      
 
 70. JS 基础 - 包装类
 
