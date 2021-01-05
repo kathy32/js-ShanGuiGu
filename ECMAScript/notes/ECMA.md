@@ -2782,6 +2782,58 @@
       
 
 70. JS 基础 - 包装类
+  - 在JS中为我们提供了三个包装类：```String() Boolean() Number()```
+
+  - 通过这三个包装类可以创建基本数据类型的对象
+
+    ```javascript
+    var num = new Number(2);
+    var str = new String("hello");
+    var bool = new Boolean(true);
+    
+    console.log(typeof num) // object
+    console.log(typeof str) // object
+    console.log(typeof bool)  // object
+    ```
+
+  - 但是在实际应用中千万不要这么干
+
+    ```javascript
+    var num1 = new Number(2);
+    var num2 = 2
+    console.log(num1 === num2)  // false
+    console.log(num1 == num2) // true, 类型转换再比较
+    
+    var bool1 = new Boolean(true);
+    var bool2 = true
+    console.log(bool1 == bool2) // true
+    console.log(bool1 === bool2)  // false
+    
+    var bool3 = new Boolean(false)
+    if (bool3) {
+      console.log('lokit')  // 成果打印了，因为是一个对象，对象转布尔值都是 true
+    }
+    
+    console.log(Boolean(new Boolean(false)))  // true
+    ```
+
+  - 当我们去操作一个基本数据类型的属性和方法时，
+
+    - 解析器会临时将其转换为对应的包装类，然后再去操作属性和方法，
+
+    - 操作完成以后再将这个临时对象进行销毁。
+
+      ```javascript
+      var num = 2
+      num.hello = 'lokit'
+      console.log(num.hello)  // undefined，转了两次，对象地址不同
+      
+      var num = 2
+      num = num.toString()  
+      console.log(typeof num) // string
+      ```
+
+      
 
 71. JS 基础 - 字符串的方法
 
