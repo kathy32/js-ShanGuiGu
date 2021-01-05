@@ -2295,6 +2295,28 @@
       
 
 64. JS 基础 - 数组去重
+  - 练习：关键是嵌套循环和关注相邻重复数据
+
+  ```javascript
+  var arr = [1,2,4,5,2,15,3,3,5]
+
+  let deArr = function (arr) {
+    for (var i=0; i<arr.length; i++) {
+      for (var j=i+1; j<arr.length; j++) {
+        if (arr[i] === arr[j]) {
+          arr.splice(j,1)
+          // 防止两个重复数据无法去重
+          j--
+        }
+      }
+    }
+    return arr
+  }
+
+  console.log(deArr(arr)) // [ 1, 2, 4, 5, 15, 3 ]
+  ```
+
+
 
 65. JS 基础 - 数组的剩余方法
 
