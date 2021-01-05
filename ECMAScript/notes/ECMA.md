@@ -2241,6 +2241,58 @@
         
 
 63. JS 基础 - slice 和 splice
+  - ```slice()```
+
+    - 可以从一个数组中截取指定的元素
+
+    - 该方法**不会影响原数组**，而是将**截取到的内容**封装为一个新的数组并**返回**
+
+    - 参数：
+
+      - 1.截取开始位置的索引（包括开始位置）
+      - 2.截取结束位置的索引（不包括结束位置）
+        - 第二个参数可以省略不写，如果不写则一直截取到最后
+      - 参数可以传递一个负值，如果是负值，则从后往前数
+
+    - ```javascript
+      var arr = ['lokit', 'yico', 'neymar', 'kathy']
+      var res = arr.slice(0,2)
+      console.log(arr)  // [ 'lokit', 'yico', 'neymar', 'kathy' ]
+      console.log(res)  // [ 'lokit', 'yico' ]
+      
+      var res = arr.slice(2)
+      console.log(res)  // [ 'neymar', 'kathy' ]
+      
+      var res = arr.slice(0,-2)
+      console.log(res)  // [ 'lokit', 'yico' ]
+      ```
+
+  - ```splice()```
+
+    - 可以用来删除数组中指定元素，并使用新的元素替换
+
+    - **会影响原数组，得到删除后的数组**
+
+    - 该方法会将**删除的元素**封装到新数组中**返回**
+
+    - 参数：
+
+      - 1.删除开始位置的索引
+      - 2.删除的个数
+      - 3.三个以后，都是替换的元素，这些元素将会插入到开始位置索引的**前边**
+
+    - ```javascript
+      var arr = ['lokit', 'yico', 'neymar', 'kathy']
+      var res = arr.splice(2,2)
+      console.log(arr)  // [ 'lokit', 'yico' ]
+      console.log(res)  // [ 'neymar', 'kathy' ]
+      
+      var res = arr.splice(2,0,'liangzai','meisi')
+      console.log(arr)  // [ 'lokit', 'yico', 'liangzai', 'meisi', 'neymar', 'kathy' ]
+      console.log(res)  // [ ]
+      ```
+
+      
 
 64. JS 基础 - 数组去重
 
