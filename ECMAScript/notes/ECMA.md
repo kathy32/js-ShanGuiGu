@@ -2413,6 +2413,87 @@
       
 
 66. JS 基础 - call 和 apply
+  - ```call()```
+
+    - call 是直接传递函数的实参
+
+      ```javascript
+      function f (a,b) {
+        console.log(a) // 2
+        console.log(b) // 3
+        console.log(this.name)  // lokit
+      }
+      
+      var obj1 = {name:'lokit'}
+      var obj2 = {name:'yico'}
+      
+      f.call(obj1,2,3)
+      ```
+
+      
+
+  - ```apply()```
+
+    - apply 需要将**实参**封装到一个数组中传递
+
+      ```javascript
+      function f (a,b) {
+        console.log(a) // 4
+        console.log(b) // 5
+        console.log(this.name)  // yico
+      }
+      
+      var obj1 = {name:'lokit'}
+      var obj2 = {name:'yico'}
+      
+      f.apply(obj2,[4,5])
+      ```
+
+      
+
+  - 这两个方法都是**函数对象的方法**需要通过函数对象来调用
+
+  - 通过两个方法可以直接调用函数，并且可以通过**第一个**实参来指定函数中 this
+
+    ```javascript
+    // 例子一
+    function f () {
+      console.log(this)  
+    }
+    // 等效
+    f.call()	// Window
+    f.apply()	// Window
+    f()	// Window
+    
+    // 例子二
+    var obj1 = {
+      name: 'lokit',
+      sayName: function () {
+        console.log(this.name)
+      }
+    }
+    var obj2 = {
+      name: 'yico',
+      sayName: function () {
+        console.log(this.name)
+      }
+    }
+    obj1.sayName.apply(obj2)  // yico
+    ```
+
+  - this 的情况：
+
+    - 1.以**函数**的形式调用时，this 是 window
+
+    - 2.以**方法**的形式调用时，this 是调用方法的对象
+
+    - 3.以**构造函数**的形式调用时，this 是新建的那个对象
+
+    - 4.使用**call 和 apply** 调用时，this 是指定的那个对象
+
+    - 5.在**全局**作用域中 this 代表 window
+
+      
 
 67. JS 基础 - arguments
 
