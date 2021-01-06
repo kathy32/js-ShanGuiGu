@@ -3213,4 +3213,69 @@
 
 75. JS 基础 - 正则表达式语法
 
+  ```javascript
+  // 任意
+  var reg = /./
+  var str = '23&^%%*'
+  console.log(reg.test(str))  // true
+
+  // 点
+  var reg = /\./
+  var str = '2.ahd'
+  console.log(reg.test(str))  // true
+
+  // 注意：构造函数中的 \ 也需要转义，所以要一个 \，需要 \\
+  var reg = new RegExp('\\.')
+  var str = 'lokit\\' 
+  console.log(reg.test(str))  // false，没有点
+
+  // \
+  var reg = /\\/	// 等同于 new RegExp('\\\\')
+  var str = 'lokit\\' // 转义，需要两个\
+  console.log(reg.test(str))  // true
+
+  // 字母数字下划线
+  var reg = /\w/
+  var str = '_' 
+  console.log(reg.test(str))  // true
+
+  var reg = /\W/
+  var str = 'lokit' 
+  console.log(reg.test(str))  // false
+
+  // 数字
+  var reg = /\d/
+  var str = '123' 
+  console.log(reg.test(str))  // true
+
+  // 空格
+  var reg = /\s/
+  var str = '  loki' 
+  console.log(reg.test(str))  // true
+
+  var reg = /\s/
+  var str = '  ' 
+  console.log(reg.test(str))  // true
+
+  // 不含空格
+  var reg = /\S/
+  var str = '   ' 
+  console.log(reg.test(str))  // false
+
+  var reg = /\S/
+  var str = '  s ' 
+  console.log(reg.test(str))  // false
+
+  // 单词边界
+  var reg = /\bloki\b/
+  var str = 'hello lokit' 
+  console.log(reg.test(str))  // false
+
+  // 练习：去除收尾空格
+  var reg = /^\s+|\s+$/
+  var str = '  loki hello   ' 
+  console.log(str.replace(reg, '')) // loki hello
+  ```
+
+
 76. JS 基础 - 邮件的正则
