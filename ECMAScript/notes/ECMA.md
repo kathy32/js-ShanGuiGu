@@ -3279,3 +3279,22 @@
 
 
 76. JS 基础 - 邮件的正则
+
+  ```javascript
+  // yico57588_  .loki  @   sina    .com  .cn
+  // ^\w{3,}   (\.\w)*  @   [A-z0-9]+   (\.[A-z]{2,5}){1,2}  $
+
+  var reg = /^\w{3,}(\.\w)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/
+  var email = 'yico@qq.com'
+  console.log(reg.test(email))  // true
+
+  email = 'yico@163.com'
+  console.log(reg.test(email))  // true
+
+  var email = 'yico@qq.com123'
+  console.log(reg.test(email))  // false
+
+  var email = '_yico@qq.com'
+  console.log(reg.test(email))  // true
+  ```
+
