@@ -2836,6 +2836,232 @@
       
 
 71. JS 基础 - 字符串的方法
+  - 在底层字符串是以**字符数组**的形式保存的
+
+    ```javascript
+    var str = 'lokit'
+    console.log(str[2]) // k
+    ```
+
+  - 字符串属性：```length``` 获取字符串的长度
+
+    ```javascript
+    var str = 'lokit'
+    console.log(str.length) // 5
+    ```
+
+  - 字符串方法：
+
+    - ```charAt()``` 根据**索引**获取指定的字符
+
+      ```javascript
+      var str = "LOKI";
+      console.log(str.charAt(0))            // 返回 L，类似于 str[0]
+      ```
+
+      
+
+    - ```charCodeAt()``` 根据**索引**获取指定的**字符编码**
+
+      ```javascript
+      var str = "LOKI";
+      console.log(str.charCodeAt(0))            // 返回 76
+      ```
+
+      
+
+    - ```String.fromCharCode()``` 根据字符**编码**获取字符
+
+      ```javascript
+      console.log(String.fromCharCode(76))            // 返回 L
+      ```
+
+      
+
+    - ```concat()``` 可以用来连接两个或多个字符串，作用和 ```+```一样
+
+      ```javascript
+      var str = 'lokit'
+      console.log(str.concat('hello', 'bye'))	// lokithellobye
+      ```
+
+      
+
+    - ```indexOf()``` 和```lastIndexOf()``` 从一个字符串中检索指定内容
+
+      - 需要一个字符串作为参数，这个字符串就是要检索的内容，
+
+      - 如果找到该内容，则会返回其**第一次出现**的索引，如果没有找到则返回-1。
+
+      - 可以指定一个第二个参数，来表示开始查找的位置
+
+      - indexOf()是从前向后找
+
+      - lastIndexOf()是从后向前找
+
+        ```javascript
+        var str = 'hello lokit';
+        
+        console.log(str.indexOf('l')) // 2
+        console.log(str.lastIndexOf('l')) // 6
+        
+        console.log(str.indexOf('y')) // -1
+        console.log(str.indexOf('l',5)) // 6
+        ```
+
+        
+
+    - ```slice()``` 
+
+      - 可以从一个字符串中截取指定的内容，并将截取到内容返回，不会影响原变量
+
+      - 参数：
+
+        - 第一个：截取开始的位置（包括开始）
+
+        - 第二个：截取结束的位置（不包括结束）
+
+        - 可以省略第二个参数，如果省略则一直截取到最后
+
+        - 可以传负数，如果是负数则从后往前数
+
+          ```javascript
+          var str = "Apple, Banana, Mango";
+          var res = str.slice(7,13);
+          console.log(res)	// Banana
+          
+          res = str.slice(-13,-7);
+          console.log(res)	// Banana
+          
+          res = str.slice(7);
+          console.log(res)	// Banana, Mango
+          ```
+
+          
+
+    - ```substr()```
+
+      - 和slice()基本一致，不同的是它第二个参数不是索引，而是**截取的数量**
+
+        ```javascript
+        var str = "Apple, Banana, Mango";
+        var res = str.substr(7,6);
+        console.log(res)	// Banana
+        ```
+
+        
+
+    - ```substring()```
+
+      - 和slice()基本一致，
+
+      - 不同的是它**不能接受负值**作为参数，如果设置一个负值，则会自动**修正为0**，
+
+      - substring()中如果第二个参数小于第一个，自动调整位置
+
+        ```javascript
+        var str = "Apple, Banana, Mango";
+        var res = str.substring(7,13);
+        console.log(res)	// Banana
+        
+        res = str.substring(5,-2)	
+        console.log(res)	// Apple, 自动转为 str.substring(0,5)	
+        ```
+
+        
+
+    - ```toLowerCase()``` 将字符串转换为小写并返回
+
+      ```javascript
+      var str = "Apple, Banana, Mango";
+      var res = str.toLowerCase()
+      console.log(res)	// apple, banana, mango
+      ```
+
+      
+
+    - ```toUpperCase()``` 将字符串转换为大写并返回
+
+    - ```split()``` 
+
+      - 可以根据指定内容将一个**字符串拆分为一个数组**
+
+      - 参数：
+
+        - 需要一个字符串作为参数，将会根据字符串去拆分数组
+        - 可以接收一个正则表达式，此时会根据正则表达式去拆分数组，自动全局匹配
+
+        ```javascript
+        var str = 'hello,lokit,bye'
+        var res = str.split(',')
+        console.log(res)  // [ 'hello', 'lokit', 'bye' ]
+        
+        var str = 'lokit'
+        var res = str.split('')
+        console.log(res)  // [ 'l', 'o', 'k', 'i', 't' ]
+        
+        var str = '1a2b3c4d5e6'
+        var res = str.split(/[A-z]/)
+        console.log(res)  // [ '1', '2', '3', '4', '5', '6' ]
+        ```
+
+        
+
+    - ```match() ```
+
+      - 可以将字符串中和正则表达式匹配的内容提取出来
+
+      - 参数：
+
+        - 正则表达式，可以根据该正则表达式将字符串中符合要求的内容提取出来
+        - 并且封装到一个**数组**中返回
+
+        ```javascript
+        var str = '1A2b3c4d5e6'
+        var res = str.match(/[a-z]/ig)	// 注意打括号
+        console.log(res)  // [ 'A', 'b', 'c', 'd', 'e' ]
+        ```
+
+        
+
+    - ```replace() ```
+
+      - 可以将字符串中指定内容替换为新的内容
+
+      - 参数：
+
+        - 第一个：被替换的内容，可以是一个正则表达式
+        - 第二个：替换的新内容
+
+        ```javascript
+        var str = '1A2b3c4d5e6'
+        var res = str.replace(/[a-z]/ig, '@')
+        console.log(res)  // 1@2@3@4@5@6
+        
+        var str = '1A2b3c4d5e6'
+        var res = str.replace(/[a-z]/ig, '')
+        console.log(res)  // 123456
+        ```
+
+        
+
+    - ```search() ```
+
+      - 可以根据正则表达式去字符串中查找指定的内容
+
+      - 参数：
+
+        - 正则表达式，将会根据该表达式查询内容，
+        - 并且将**第一个匹配到的内容的索引返回**，如果没有匹配到任何内容，则返回-1。
+        - 即使设置全局也只会返回第一个匹配的索引
+
+        ```javascript
+        var str = 'hello abc hello aec hello afc'
+        var res = str.search(/a[bef]c/)
+        console.log(res)  // 6
+        ```
+
+        
 
 72. JS 基础 - 正则表达式的简介
 
