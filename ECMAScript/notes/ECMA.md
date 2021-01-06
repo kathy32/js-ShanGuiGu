@@ -3121,8 +3121,95 @@
       - 如果符合返回true，否则返回false
 
 73. JS 基础 - 正则语法
+  - 量词，只对前面一个内容起作用
+
+    - ```{n}``` 正好n次
+
+    - ```{m,n}``` m-n次
+
+    - ```{m,}``` 至少m次
+
+    - ```+```至少1次 ```{1,}```
+
+    - ```?```   0次或1次``` {0,1}```
+
+    - ```*```0次或多次 ```{0,}```
+
+      ```javascript
+      var reg = /a{3}/
+      var str = 'aaab'
+      console.log(reg.test(str))  // true
+      
+      var reg = /ab{3}/
+      var str = 'ababab'
+      console.log(reg.test(str))  // false
+      
+      var reg = /(ab){3}/
+      var str = 'ababab'
+      console.log(reg.test(str))  // true
+      
+      var reg = /ab{3}c/
+      var str = 'abbbcd'
+      console.log(reg.test(str))  // true
+      
+      var reg = /ab{1,3}c/
+      var str = 'abbcd'
+      console.log(reg.test(str))  // true
+      
+      var reg = /ab+c/
+      var str = 'abbc'
+      console.log(reg.test(str))  // true
+      
+      var reg = /ab*c/
+      var str = 'ac'
+      console.log(reg.test(str))  // true
+      
+      var reg = /ab?c/
+      var str = 'ac'
+      console.log(reg.test(str))  // true
+      ```
+
+      
+
+  - 转义字符
+
+    - \ 在正则表达式中使用```\```作为转义字符
+    - ```\.``` 表示.
+    - ```\\ ```表示\
+    - ```.``` 表示任意字符
+    - ```\w```相当于```[A-z0-9_]```，字母数字下划线
+    - ```\W``` 相当于```[^A-z0-9_]```
+    - \d任意数字
+    - \D除了数字
+    - \s 空格
+    - \S 除了空格
+    - \b 单词边界
+    - \B 除了单词边界
+
+  - ```^``` 表示开始		
+
+  - ```$``` 表示结束
+
+    ```javascript
+    var reg = /^a$/
+    var str = 'aaa'
+    console.log(reg.test(str))  // false，只能一个 a
+    ```
+
+  - 练习：手机号
+
+    ```javascript
+    // 1 8 761606398   11位
+    // ^1   [3-9]   \d{9}$
+    var phoneReg = /^1[3-9]\d{9}$/
+    var phoneStr = '18761606398'
+    console.log(phoneReg.test(phoneStr))	// true
+    ```
+
+    
 
 74. JS 基础 - 字符串和正则相关的方法
+  - 见72集
 
 75. JS 基础 - 正则表达式语法
 
