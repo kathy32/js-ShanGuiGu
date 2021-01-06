@@ -3064,6 +3064,61 @@
         
 
 72. JS 基础 - 正则表达式的简介
+  - 正则用来定义一些字符串的规则
+
+    - 程序可以根据这些规则来判断一个字符串是否符合规则，
+
+    - 也可以将一个字符串中符合规则的内容提取出来。
+
+  - 创建正则表达式
+
+    - 构造函数：```var reg = new RegExp("正则","匹配模式");```
+
+    - 字面量：```var reg = /正则表达式/匹配模式```
+
+      ```javascript
+      var reg = new RegExp('k','g')
+      var str = 'lokit'
+      console.log(reg.test(str))  // true
+      console.log(typeof reg) // object
+      
+      var reg = new RegExp('k','i')	// 忽略大小写
+      var str = 'LOKIT'
+      console.log(reg.test(str))  // true
+      ```
+
+  - 语法：
+
+    - 匹配模式：
+
+      - ```i```:忽略大小写
+      - ```g```:全局匹配模式
+      - 设置匹配模式时，可以都不设置，也可以设置1个，也可以全设置，设置时没有顺序要求
+
+    - 正则语法
+
+      - ```|``` 或，```[]``` 或，```[^ ]``` 除了
+
+      - ```[a-z]``` 小写字母，```[A-Z]``` 大写字母，```[A-z]``` 任意字，```[0-9]``` 任意数字
+
+        ```javascript
+        var reg = /[ab]/
+        console.log(reg.test('ha')) // true
+        
+        var reg = /l[abo]k/
+        console.log(reg.test('loki')) // true
+        
+        var reg = /l[^abo]k/
+        console.log(reg.test('loki')) // false
+        ```
+
+        
+
+  - 方法：
+
+    - ```test()```
+      - 可以用来检查一个字符串是否符合正则表达式
+      - 如果符合返回true，否则返回false
 
 73. JS 基础 - 正则语法
 
