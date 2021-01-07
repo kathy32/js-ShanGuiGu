@@ -122,6 +122,33 @@
 
           
 2. JS 基础 - 事件的简介
+  - 事件指的是用户和浏览器之间的交互行为。比如：点击按钮、关闭窗口、鼠标移动...
+
+  - 我们可以为事件来绑定**回调函数**来响应事件
+
+  - 绑定事件的方式：
+
+    - 可以在标签的事件**属性**中设置相应的JS代码
+
+      ```javascript
+      <button onclick="js代码。。。">按钮</button>
+      ```
+
+      
+
+    - 可以通过为对象的指定事件属性设置**回调函数**的形式来处理事件
+
+      ```javascript
+      <button id="btn">按钮</button>
+      <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+      
+        };
+      </script>
+      ```
+
+    
 3. JS 基础 - 文档的加载
 4. JS 基础 - DOM 查询
 5. JS 基础 - 图片切换的练习
