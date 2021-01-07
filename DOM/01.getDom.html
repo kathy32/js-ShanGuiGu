@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      width: 800px;
+      margin:0 auto;
+    }
+    #total {
+      width: 450px;
+      float: left;
+    }
+    #btnList {
+      float: left;
+    }
+    .inner {
+      border: 1px solid;
+      width: 400px;
+      padding: 10px;
+    }
+    ul {
+      display: flex;
+    }
+    .inner li {
+      margin-left: 10px;
+      padding: 5px;
+      list-style: none;
+      border: 1px solid;
+      background-color: #99FF99;
+    }
+    button {
+      width: 300px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="total">
+    <div class="inner">
+      <p>你喜欢哪个城市？</p>
+      <ul id="city">
+        <li id="bj">北京</li>
+        <li>上海</li>
+        <li>东京</li>
+        <li>成都</li>
+      </ul>
+      <p>你喜欢哪款游戏？</p>
+      <ul id="game">
+        <li id="lol">王者荣耀</li>
+        <li>魂斗罗</li>
+        <li>QQ音速</li>
+        <li>吃鸡</li>
+      </ul>
+      <p>你手机的操作系统是?</p>
+      <ul id="phone">
+        <li>ios</li>
+        <li id="android">android</li>
+        <li>windows</li>
+      </ul>
+    </div>
+    <br>
+    <div class="inner">
+      gender:
+      <input type="radio" name="gender" value="male">Male</input>
+      <input type="radio" name="gender" value="male">Female</input>
+      <br>
+      <br>
+      name:
+      <input type="text" name="name" id="username" value="lokit">
+    </div>
+  </div>
+
+  <div id="btnList">
+    <div>
+      <button id="btn01">查找#bj节点</button>
+    </div>
+    <div>
+      <button id="btn02">查找所有li节点</button>
+    </div>
+    <div>
+      <button id="btn03">查找name=gender的所有节点</button>
+    </div>
+    <div>
+      <button id="btn04">查找#city下所有li节点</button>
+    </div>
+    <div>
+      <button id="btn05">返回#city下的所有子节点</button>
+    </div>
+    <div>
+      <button id="btn06">返回#phone的第一个子节点</button>
+    </div>
+    <div>
+      <button id="btn07">返回#bj父节点</button>
+    </div>
+    <div>
+      <button id="btn08">返回#android的前一个兄弟节点</button>
+    </div>
+    <div>
+      <button id="btn09">返回#username的value属性值</button>
+    </div>
+    <div>
+      <button id="btn10">设置#username的value属性值</button>
+    </div>
+    <div>
+      <button id="btn11">返回#bj的文本值</button>
+    </div>
+
+  </div>
+</body>
+</html>
