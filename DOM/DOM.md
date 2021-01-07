@@ -197,6 +197,70 @@
 
     
 4. JS 基础 - DOM 查询
+  - document查询方法：
+
+  - 根据元素的 id 属性查询**一个**元素节点对象：```document.getElementById("id属性值");```
+
+    ```html
+    <body>
+      <button id="btn">按钮</button>
+      <script>
+        var btn = document.getElementById('btn')
+        console.log(btn)
+        btn.innerHTML = 'button'	// 按钮 -> 修改为英文 button
+      </script>
+    </body>
+    ```
+
+    
+
+  - 根据元素的 name 属性值查询**一组**元素节点对象:```document.getElementsByName("name属性值");```
+
+  - 根据 标签名 来查询**一组**元素节点对象：```document.getElementsByTagName("标签名");```
+
+  - ```01.getDom.html``` 部分代码
+
+    ```javascript
+    var myClick = function (btn, fun) {
+      var btn = document.getElementById(btn)
+      btn.onclick = fun
+    }
+    
+    window.onload = function () {
+      // 1. 查找#bj节点
+      myClick('btn01', function () {
+        var bj = document.getElementById('bj')
+        alert(bj) // [object HTMLLIElement]
+        alert(bj.innerHTML) // 北京
+      })
+    
+      // 2. 查找所有li节点
+      myClick('btn02', function () {
+        var liList = document.getElementsByTagName('li')
+        // 类数组对象，即使一个元素也是类数组返回
+        alert(liList) // [object HTMLCollection]
+        alert(liList.length)  // 11
+      })
+    
+      // 3. 查找name=gender的所有节点
+      myClick('btn03', function () {
+        var gender = document.getElementsByName('gender')
+        alert(gender) // [object NodeList]
+        alert(gender.length)  // 2
+        for (var i=0; i<gender.length; i++) {
+          // innerHTML 用于获取元素内部的 HTML 代码
+          // 对于自结束标签，这个属性没有意义
+          // alert(gender[i].innerHTML)  // 空白
+    
+          // 如果需要读取原属属性，直接 . 运算读取
+          // 注意：读取 HTML 中 class，在 js 中是 className
+          alert(gender[i].value)
+        }
+      })
+    }
+    ```
+
+  
 5. JS 基础 - 图片切换的练习
 6. JS 基础 - DOM 查询
 7. JS 基础 - 全选练习

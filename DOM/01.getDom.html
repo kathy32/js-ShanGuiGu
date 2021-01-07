@@ -38,6 +38,45 @@
   </style>
 </head>
 <body>
+  <script>
+    var myClick = function (btn, fun) {
+      var btn = document.getElementById(btn)
+      btn.onclick = fun
+    }
+
+    window.onload = function () {
+      // 1. 查找#bj节点
+      myClick('btn01', function () {
+        var bj = document.getElementById('bj')
+        alert(bj) // [object HTMLLIElement]
+        alert(bj.innerHTML) // 北京
+      })
+
+      // 2. 查找所有li节点
+      myClick('btn02', function () {
+        var liList = document.getElementsByTagName('li')
+        // 类数组对象，即使一个元素也是类数组返回
+        alert(liList) // [object HTMLCollection]
+        alert(liList.length)  // 11
+      })
+
+      // 3. 查找name=gender的所有节点
+      myClick('btn03', function () {
+        var gender = document.getElementsByName('gender')
+        alert(gender) // [object NodeList]
+        alert(gender.length)  // 2
+        for (var i=0; i<gender.length; i++) {
+          // innerHTML 用于获取元素内部的 HTML 代码
+          // 对于自结束标签，这个属性没有意义
+          // alert(gender[i].innerHTML)  // 空白
+
+          // 如果需要读取原属属性，直接 . 运算读取
+          // 注意：读取 HTML 中 class，在 js 中是 className
+          alert(gender[i].value)
+        }
+      })
+    }
+  </script>
   <div id="total">
     <div class="inner">
       <p>你喜欢哪个城市？</p>
@@ -64,12 +103,12 @@
     <br>
     <div class="inner">
       gender:
-      <input type="radio" name="gender" value="male">Male</input>
-      <input type="radio" name="gender" value="male">Female</input>
+      <input type="radio" name="gender" value="male"/>Male
+      <input type="radio" name="gender" value="female"/>Female
       <br>
       <br>
       name:
-      <input type="text" name="name" id="username" value="lokit">
+      <input type="text" name="name" id="username" value="lokit"/>
     </div>
   </div>
 
