@@ -130,7 +130,7 @@
 
     - 可以在标签的事件**属性**中设置相应的JS代码
 
-      ```javascript
+      ```html
       <button onclick="js代码。。。">按钮</button>
       ```
 
@@ -138,7 +138,7 @@
 
     - 可以通过为对象的指定事件属性设置**回调函数**的形式来处理事件
 
-      ```javascript
+      ```html
       <button id="btn">按钮</button>
       <script>
         var btn = document.getElementById("btn");
