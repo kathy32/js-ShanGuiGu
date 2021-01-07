@@ -150,6 +150,52 @@
 
     
 3. JS 基础 - 文档的加载
+  - 浏览器在加载一个页面时，是按照**自上向下**的顺序加载的，加载一行执行一行。
+
+  - 如果将js代码编写到页面的上边，当代码执行时，页面中的DOM对象还没有加载，
+
+    - 此时将会无法正常获取到DOM对象，导致DOM操作失败。
+    - 阻塞页面渲染
+
+  - 解决方式一：
+
+    - 可以将js代码编写到body的下边
+
+      ```html
+      <body>
+        <button id="btn">按钮</button>
+        <script>
+            var btn = document.getElementById("btn");
+            btn.onclick = function(){
+      
+            };
+        </script>
+      </body>
+      ```
+
+      
+
+  - 解决方式二：
+
+    - 将js代码编写到```window.onload = function(){}```中
+
+    - window.onload 对应的回调函数会在**整个页面加载完毕以后**才执行
+
+    - 所以可以确保代码执行时，DOM对象已经加载完毕了
+
+      ```html
+      <script>
+        window.onload = function(){
+          var btn = document.getElementById("btn");
+          btn.onclick = function(){
+      
+          };
+        };
+      </script>
+      <button id="btn">按钮</button>
+      ```
+
+    
 4. JS 基础 - DOM 查询
 5. JS 基础 - 图片切换的练习
 6. JS 基础 - DOM 查询
