@@ -262,6 +262,39 @@
 
   
 5. JS 基础 - 图片切换的练习
+
+
+  ```javascript
+  var prev = document.getElementById('prev')
+  var next = document.getElementById('next')
+  var img = document.getElementsByTagName('img')[0]
+  var info = document.getElementById('info')
+
+  var imgArr = ['./img/1.png','./img/2.png','./img/3.png','./img/4.png']
+  var index = 0
+
+  info.innerHTML = `一共${imgArr.length}张，当前第${index+1}张`
+
+  prev.onclick = function () {
+    index--
+    if (index < 0) {
+      index = imgArr.length-1
+    }
+    img.src = imgArr[index]
+    info.innerHTML = `一共${imgArr.length}张，当前第${index+1}张`
+  }
+
+  next.onclick = function () {
+    index++
+    if (index > imgArr.length - 1) {
+      index = 0
+    }
+    img.src = imgArr[index]
+    info.innerHTML = `一共${imgArr.length}张，当前第${index+1}张`
+  }
+  ```
+
+
 6. JS 基础 - DOM 查询
   - 通过具体的**元素节点**来查询
 
