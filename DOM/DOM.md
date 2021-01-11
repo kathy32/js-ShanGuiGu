@@ -345,8 +345,133 @@
 
   
 7. JS 基础 - 全选练习
+```03.checkBox.html```
+
 
 8. JS 基础 - DOM 查询的剩余方法
+  - ```document.all```
+
+    - 获取页面中的所有元素，相当于```document.getElementsByTagName("*");```
+
+      ```html
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+      </head>
+      <body>
+        <script>
+          window.onload = function () {
+            var all = document.all
+            alert(all.length) // 9
+            for (let i=0; i<all.length; i++) {
+              /*
+              * [object HTMLHtmlElement]
+              * [object HTMLHeadElement]
+              * [object HTMLMetaElement]
+              * [object HTMLMetaElement]
+              * [object HTMLTitleElement]
+              * [object HTMLBodyElement]
+              * [object HTMLScriptElement]
+              * [object HTMLDivElement]
+              * [object HTMLDivElement]
+              */
+              alert(all[i]) 
+            }
+            }
+        </script>
+      
+        <div id="contaner">
+          <div></div>
+        </div>
+      </body>
+      </html>
+      ```
+
+      
+
+  - ```document.documentElement```
+
+    - 获取页面中```html```根元素
+
+      ```html
+      <body>
+        <script>
+          window.onload = function () {
+            var html = document.documentElement
+            alert(html) // [object HTMLHtmlElement]
+          }
+        </script>
+      
+        <div id="contaner">
+          <div></div>
+        </div>
+      </body>
+      ```
+
+      
+
+  - ```document.body```
+
+    - 获取页面中的```body```元素
+
+      ```html
+      <body>
+        <script>
+          window.onload = function () {
+            var body = document.body
+            alert(body) // [object HTMLBodyElement]
+          }
+        </script>
+      </body>
+      ```
+
+      
+
+  - ```document.getElementsByClassName()```
+
+    - 根据元素的class属性值查询一组元素节点对象
+    - 这个方法不支持IE8及以下的浏览器
+
+  - ```document.querySelector()```
+
+    - 根据**CSS选择器**去页面中查询一个元素
+    - 如果匹配到的元素有多个，则它会返回查询到的**第一个元素**
+
+  - ```document.querySelectorAll()```
+
+    - 根据CSS选择器去页面中查询一组元素
+    - 会将匹配到所有元素封装到一个**数组**中返回，即使只匹配到一个
+
+    ```html
+    <body>
+      <script>
+        window.onload = function () {
+          // 方式一
+          var items1 = document.getElementsByClassName('items')
+          alert(items1.length) // 3
+    
+          // 方式二
+          var items2 = document.querySelector('#contaner div')
+          alert(items2) // [object HTMLDivElement],返回第一个匹配的元素
+    
+          // 方式三
+          var items3 = document.querySelectorAll('#contaner div')
+          alert(items3.length)  // 3，返回类数组
+        }
+      </script>
+    
+      <div id="contaner">
+        <div class="items"></div>
+        <div class="items"></div>
+        <div class="items"></div>
+      </div>
+    </body>
+    ```
+
+    
 9. JS 基础 - DOM 增删改
 10. JS 基础 - 添加删除修改
 11. JS 基础 - a 的索引问题
