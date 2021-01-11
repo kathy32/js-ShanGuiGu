@@ -75,6 +75,64 @@
           alert(gender[i].value)
         }
       })
+
+      // 4. 查找#city下所有li节点
+      myClick('btn04', function () {
+        var city = document.getElementById('city')
+        var cityList = city.getElementsByTagName('li')
+        alert(cityList.length)  // 4
+      })
+
+      // 5. 返回#city的所有子节点
+      myClick('btn05', function () {
+        var city = document.getElementById('city')
+        var cityChildren = city.childNodes
+        alert(cityChildren.length)  // 9，包括空白文本节点
+      })
+
+      // 6. 返回#phone的第一个子节点
+      myClick('btn06', function () {
+        var phone = document.getElementById('phone')
+        var phoneFirst = phone.firstChild
+        alert(phoneFirst) // [object Text]
+      }) 
+
+      // 7. 返回#bj的父节点
+      myClick('btn07', function () {
+        var bj = document.getElementById('bj')
+        var bjPar = bj.parentNode
+        alert(bjPar)  // [object HTMLUListElement]
+        alert(bjPar.innerHTML)
+        alert(bjPar.innerText)
+      })
+
+      // 8. 返回#android的前一个兄弟节点
+      myClick('btn08', function () {
+        var android = document.getElementById('android')
+        var preAndroid = android.previousSibling
+        alert(preAndroid) // [object Text] 空白文本
+      })
+
+      // 9. 返回#username的value属性值
+      myClick('btn09', function () {
+        var username = document.getElementById('username')
+        var usernameVal = username.value
+        alert(usernameVal)  // lokit
+      })
+
+      // 10. 设置#username的value属性值
+      myClick('btn10', function () {
+        var username = document.getElementById('username')
+        username.value = 'yico'
+        alert(username.value)  // yico
+      })
+
+      // 11. 返回#bj的文本值
+      myClick('btn11', function () {
+        var bj = document.getElementById('bj')
+        alert(bj.innerText) // 方式一：北京
+        alert(bj.firstChild.nodeValue)  // 方式二：北京
+      })
     }
   </script>
   <div id="total">
