@@ -511,6 +511,29 @@
 
 
 11. JS 基础 - a 的索引问题
+  ```javascript
+  var allA = document.getElementsByTagName('a')
+  for (var i=0; i<allA.length; i++) {
+      allA[i].onclick = function () {
+        // 此处的 this 不能为 allA[i]
+        // for 循环是同步执行
+        // onclick 回调函数是异步执行
+        // 二者 i 不统一
+        // 回调函数中的 i 一直为 3（长度）
+        var tr = this.parentNode.parentNode // 重难点！
+        var name = tr.getElementsByTagName('td')[0].innerHTML
+
+        var flag = confirm(`确定删除${name}吗？`)
+        if (flag) {
+          tr.parentNode.removeChild(tr)
+        }
+
+        return false
+      }
+  }
+  ```
+
+
 12. JS 基础 - 操作内联样式
 13. JS 基础 - 获取元素的样式
 14. JS 基础 - getStyle() 方法
