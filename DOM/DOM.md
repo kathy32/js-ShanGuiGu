@@ -487,6 +487,29 @@
 10. JS 基础 - 添加删除修改
 
 
+  ```javascript
+  window.onload = function () {
+    var aTags = document.getElementsByTagName('a')
+
+    for (let i=0; i<aTags.length; i++) {
+
+      aTags[i].onclick = function () {
+        var tr = this.parentNode.parentNode // 重难点！
+        var name = tr.getElementsByTagName('td')[0].innerHTML
+
+        var flag = confirm(`确定删除${name}吗？`)
+        if (flag) {
+          tr.parentNode.removeChild(tr)
+        }
+
+        return false
+      }
+    }
+  }
+  ```
+
+
+
 11. JS 基础 - a 的索引问题
 12. JS 基础 - 操作内联样式
 13. JS 基础 - 获取元素的样式
