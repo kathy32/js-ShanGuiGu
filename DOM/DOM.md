@@ -473,17 +473,17 @@
 
     
 9. JS 基础 - DOM 增删改
-- ```document.createElement()``` 可以根据标签名**创建**一个**元素**节点对象
-- ```document.createTextNode()``` 可以根据文本内容**创建**一个**文本**节点对象
-- ```父节点.appendChild(子节点)``` 向父节点中**添加**指定的子节点
-- ```父节点.insertBefore(新节点,旧节点)``` 将一个新的节点**插入**到旧节点的前边
-- ```父节点.replaceChild(新节点,旧节点)``` 使用一个新的节点去**替换**旧节点
-- ```父节点.removeChild(子节点)``` **删除**指定的子节点
-  - 推荐方式：```子节点.parentNode.removeChild(子节点)```
+  - ```document.createElement()``` 可以根据标签名**创建**一个**元素**节点对象
+  - ```document.createTextNode()``` 可以根据文本内容**创建**一个**文本**节点对象
+  - ```父节点.appendChild(子节点)``` 向父节点中**添加**指定的子节点
+  - ```父节点.insertBefore(新节点,旧节点)``` 将一个新的节点**插入**到旧节点的前边
+  - ```父节点.replaceChild(新节点,旧节点)``` 使用一个新的节点去**替换**旧节点
+  - ```父节点.removeChild(子节点)``` **删除**指定的子节点
+    - 推荐方式：```子节点.parentNode.removeChild(子节点)```
 
-- ```04.DomMethod.html```
+  - ```04.DomMethod.html```
 
-  
+    
 10. JS 基础 - 添加删除修改
 11. JS 基础 - a 的索引问题
 12. JS 基础 - 操作内联样式
