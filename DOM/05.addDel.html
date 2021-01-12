@@ -43,8 +43,51 @@
       var aTags = document.getElementsByTagName('a')
 
       for (let i=0; i<aTags.length; i++) {
+        aTags[i].onclick = del
+      }
 
-        aTags[i].onclick = function () {
+      // submit 添加
+      var addEmpButton = document.getElementById('addEmpButton')
+      addEmpButton.onclick = function () {
+        var name = document.getElementById('empName').value
+        var email = document.getElementById('email').value
+        var salary = document.getElementById('salary').value
+
+        var nameTd = document.createElement('td')
+        var emailTd = document.createElement('td')
+        var salaryTd = document.createElement('td')
+        var delA = document.createElement('a')
+        var delTd = document.createElement('td')
+        delA.href = 'javascript:;'
+        delA.onclick = del
+
+        var nameTxt = document.createTextNode(name)
+        var emailTxt = document.createTextNode(email)
+        var salaryTxt = document.createTextNode(salary)
+        var delTxt = document.createTextNode('Delete')
+
+        nameTd.appendChild(nameTxt)
+        emailTd.appendChild(emailTxt)
+        salaryTd.appendChild(salaryTxt)
+        delA.appendChild(delTxt)
+        delTd.appendChild(delA)
+
+        var tr = document.createElement('tr')
+
+        tr.appendChild(nameTd)
+        tr.appendChild(emailTd)
+        tr.appendChild(salaryTd)
+        tr.appendChild(delTd)
+
+        var employeeTable = document.getElementById('employeeTable')
+        var tbody = employeeTable.getElementsByTagName('tbody')[0]
+        tbody.appendChild(tr)
+
+      }
+    }
+
+
+    var del = function () {
           var tr = this.parentNode.parentNode // 重难点！
           var name = tr.getElementsByTagName('td')[0].innerHTML
 
@@ -52,11 +95,9 @@
           if (flag) {
             tr.parentNode.removeChild(tr)
           }
-          
+
           return false
         }
-      }
-    }
   </script>
 
 	<table id="employeeTable">
