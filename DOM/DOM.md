@@ -535,6 +535,62 @@
 
 
 12. JS 基础 - 操作内联样式
+  - 使用 style 属性来操作元素的内联样式
+
+  - 读取内联样式
+    - 语法：```元素.style.样式名```
+    - 注意：如果样式名中带有```-```，则需要将样式名修改为驼峰命名法, 将```-```去掉，然后```-```后的字母改大写。如： ```background-color --> backgroundColor```
+  - 修改内联样式：
+    - 语法：```元素.style.样式名 = 样式值```
+    - 通过style修改的样式都是内联样式，由于**内联样式的优先级比较高**，
+    - 所以我们通过JS来修改的样式，往往会立即生效，
+    - 但是如果样式中设置了!important，则内联样式将不会生效。
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      #box {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      window.onload = function () {
+        var box = document.getElementById('box')
+        var btn01 = document.getElementById('btn01')
+        var btn02 = document.getElementById('btn02')
+
+        btn01.onclick = function () {
+          box.style.width = '300px'
+          box.style.height = '300px'
+          box.style.backgroundColor = 'blue'
+        }
+
+        btn02.onclick = function () {
+          // 只能读取内联样式
+          alert(box.style.width)
+        }
+      }
+    </script>
+
+    <div id="contaner">
+      <button id="btn01">按钮1</button>
+      <button id="btn02">按钮2</button>
+      <div id="box"></div>
+    </div>
+  </body>
+  </html>
+  ```
+
+
 13. JS 基础 - 获取元素的样式
 14. JS 基础 - getStyle() 方法
 15. JS 基础 - 其他样式相关的属性
