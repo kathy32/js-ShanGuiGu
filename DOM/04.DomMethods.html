@@ -56,10 +56,10 @@
         var bj = document.getElementById('bj')
         var gzLi = document.createElement('li')
         var gzText = document.createTextNode('广州')
-        gzLi.appendChild(gzText)
-
+        
         //创建一个"广州"节点,添加到#city下
         myClick('btn01', function () {
+          gzLi.appendChild(gzText)
           city.appendChild(gzLi)
         })
 
