@@ -592,7 +592,60 @@
 
 
 13. JS 基础 - 获取元素的样式
+  - 读取元素的当前样式
+
+  - 正常浏览器
+
+    - 使用```getComputedStyle()```
+
+    - 这个方法是 window 对象的方法，可以返回一个对象，这个对象中保存着当前元素生效样式
+
+    - 参数：
+
+      - 要获取样式的元素
+      - 可以传递一个伪元素，一般传 null
+
+    - 例子：
+
+      ```javascript
+      // 获取元素的宽度
+      getComputedStyle(box , null)["width"];
+      ```
+
+    - 通过该方法读取到样式都是**只读**的不能修改
+
+  - IE8
+
+    - 使用 ```currentStyle```
+
+    - 语法: ```元素.currentStyle.样式名```
+
+    - 例子：
+
+      ```javascript
+      box.currentStyle["width"]
+      ```
+
+    - 通过这个属性读取到的样式是只读的不能修改
+
+    
 14. JS 基础 - getStyle() 方法
+  ```javascript
+  btn03.onclick = function () {
+    var w = getStyle(box, 'width')
+    alert(w)  // 200px
+  }
+
+  function getStyle (obj, name) {
+    if (window.getComputedStyle) {
+      return getComputedStyle(obj,null)[name]
+    } else {
+      return obj.getComputedStyle[name]
+    }
+  }
+  ```
+
+
 15. JS 基础 - 其他样式相关的属性
 16. JS 基础 - 事件对象
 17. JS 基础 - div 跟随鼠标移动

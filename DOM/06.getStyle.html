@@ -18,6 +18,7 @@
       var box = document.getElementById('box')
       var btn01 = document.getElementById('btn01')
       var btn02 = document.getElementById('btn02')
+      var btn03 = document.getElementById('btn03')
 
       btn01.onclick = function () {
         box.style.width = '300px'
@@ -29,12 +30,27 @@
         // 只能读取内联样式
         alert(box.style.width)
       }
+
+      btn03.onclick = function () {
+        var w = getStyle(box, 'width')
+        alert(w)  // 200px
+      }
+    }
+
+
+    function getStyle (obj, name) {
+      if (window.getComputedStyle) {
+        return getComputedStyle(obj,null)[name]
+      } else {
+        return obj.getComputedStyle[name]
+      }
     }
   </script>
 
   <div id="contaner">
     <button id="btn01">按钮1</button>
     <button id="btn02">按钮2</button>
+    <button id="btn03">按钮3</button>
     <div id="box"></div>
   </div>
 </body>
