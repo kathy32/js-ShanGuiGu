@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box01 {
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+      border: 10px solid greenyellow;
+      background-color: hotpink;
+    }
+
+    #box04 {
+      width: 200px;
+      height: 300px;
+      background-color: indianred;
+      overflow: auto;
+    }
+
+    #box05 {
+      width: 150px;
+      height: 800px;
+      background-color: lightblue;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      var btn01 = document.getElementById('btn01')
+      var box01 = document.getElementById('box01')
+      btn01.onclick = function () {
+        alert(box01.clientHeight) // 120
+
+        alert(box01.offsetWidth)  // 140
+        alert(box01.offsetParent) // [object HTMLBodyElement]
+        alert(box01.offsetLeft) // 8，相对于 body 有个默认间距
+      }
+
+      var btn02 = document.getElementById('btn02')
+      var box05 = document.getElementById('box05')
+      var box04 = document.getElementById('box04')
+      btn02.onclick = function () {
+        alert(box05.scrollHeight) // 800
+        alert(box05.clientHeight) // 800
+        alert(box04.scrollHeight) // 800，重点关注，可滚动的区域大于自身高度
+        alert(box04.clientHeight) // 300  
+
+        alert(box04.scrollTop)  // 178，随意滚动的高度
+        alert(box04.scrollHeight - box04.scrollTop) // 300，滚动到底部时，值为 box04.clientHeight
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="contaner">
+    <button id="btn01">按钮1</button>
+    <br>
+    <br>
+    <div id="box01"></div>
+  </div>
+
+  <br>
+  <br>
+
+  <button id="btn02">按钮2</button>
+  <br>
+  <br>
+  <div id="box04">
+    <div id="box05"></div>
+  </div>
+</body>
+</html>
