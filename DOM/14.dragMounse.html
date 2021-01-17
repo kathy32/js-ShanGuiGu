@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box1 {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      background-color: lawngreen;
+    }
+
+    #box2 {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      left: 300px;
+      top: 300px;
+      background-color: hotpink;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      var box1 = document.getElementById('box1')
+
+      box1.onmousedown = function (event) {
+        event = event || window.event
+        // 需求：鼠标点击的随意，box 保持不动
+        var ol = event.clientX - box1.offsetLeft
+        var ot = event.clientY - box1.offsetTop
+
+        document.onmousemove = function (event) {
+          event = event || window.event
+          var left = event.clientX - ol
+          var top = event.clientY - ot
+          box1.style.left = left + 'px'
+          box1.style.top = top + 'px'
+        }
+
+        document.onmouseup = function () {
+          document.onmousemove = null
+          document.onmouseup = null
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="box1"></div>
+  <div id="box2"></div>
+</body>
+</html>
