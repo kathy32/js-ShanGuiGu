@@ -791,6 +791,58 @@
 
 
 19. JS 基础 - 事件的委派
+  - 我们希望只绑定一次事件，即可应用到多个元素上，即使元素是后添加的
+
+  - 我们可以尝试将其绑定到元素的**共同祖先元素**
+
+  - 事件委派：
+
+    - 指将事件统一绑定给元素的共同的祖先元素，这样后代元素上的事件触发时，会一直冒牌到祖先元素，从而通过祖先元素的响应函数来处理事件
+    - 事件委派是利用了**冒泡**，通过委派可以**减少事件绑定的次数**，提高程序的性能
+
+  - 如果触发事件的对象是我们期望的元素，才执行
+
+    - ```target```
+
+    - event 中的 target 表示的触发事件的对象
+
+      ```12.eventDelegate.html```
+
+  ```html
+  <head>
+    <script>
+      window.onload = function () {
+        var u1 = document.getElementById('u1')
+        var btn = document.getElementById('btn')
+        btn.onclick = function () {
+          var liTag = document.createElement('li')
+          liTag.innerHTML = `<a href='javascript:;' class="link">附加链接</a>`
+          u1.appendChild(liTag)
+        }
+        u1.onclick = function (event) {
+          // 如果触发事件的对象是我们期望的元素，才执行
+          event = event || window.event
+          if (event.target.className === 'link') {
+            alert('loki')
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <button id="btn">按钮</button>
+    <br>
+    <br>
+    <ul id="u1">
+      <li><a href="javascript:;" class="link">链接一</a></li>
+      <li><a href="javascript:;" class="link">链接二</a></li>
+      <li><a href="javascript:;" class="link">链接三</a></li>
+    </ul>
+  </body>
+  </html>
+  ```
+
+
 20. JS 基础 - 事件的绑定
 21. JS 基础 - 完成 bind 函数
 22. JS 基础 - 事件的传播

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    window.onload = function () {
+      var u1 = document.getElementById('u1')
+      var btn = document.getElementById('btn')
+      btn.onclick = function () {
+        var liTag = document.createElement('li')
+        liTag.innerHTML = `<a href='javascript:;' class="link">附加链接</a>`
+        u1.appendChild(liTag)
+      }
+
+      // var allA = document.getElementsByTagName('a')
+      // for (var i=0; i<allA.length; i++) {
+      //   allA[i].onclick = function () {
+      //     alert('lokit')
+      //   }
+      // }
+
+      u1.onclick = function (event) {
+        // 如果触发事件的对象是我们期望的元素，才执行
+        event = event || window.event
+        if (event.target.className === 'link') {
+          alert('loki')
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <button id="btn">按钮</button>
+  <br>
+  <br>
+  <ul id="u1">
+    <li><a href="javascript:;" class="link">链接一</a></li>
+    <li><a href="javascript:;" class="link">链接二</a></li>
+    <li><a href="javascript:;" class="link">链接三</a></li>
+  </ul>
+</body>
+</html>
