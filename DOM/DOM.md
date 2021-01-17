@@ -865,6 +865,34 @@
 
 
 21. JS 基础 - 完成 bind 函数
+  - 定义一个函数，用来为指定元素绑定响应函数
+
+  - ```addEventListener()``` 中的 this 指绑定事件的对象
+
+  - ```addEventListener()``` 中的 this 指 window
+
+    ```javascript
+    // 13.addEventListener.html
+    // 定义一个函数，用来为指定元素绑定响应函数
+    /**
+     * 参数：
+    *  obj 要绑定事件的对象
+    *  eventStr 事件的字符串
+    *  callback 回调函数 
+    */
+    function bind (obj, eventStr, callback) {
+      if (obj.addEventListener) {
+        obj.addEventListener(eventStr, callback, false)
+      } 
+      else {
+        obj.attachEvent('on'+eventStr, function () {
+          callback.call(obj)  // 改变 this 指向，IE8 默认为 window
+        })
+      }
+    }
+    ```
+
+  
 22. JS 基础 - 事件的传播
 23. JS 基础 - 拖拽
 24. JS 基础 - 滚轮的事件

@@ -12,9 +12,26 @@
         alert('loki')
       }, false)
 
-      btn.addEventListener('click', function () {
+      bind(btn, 'click', function () {
         alert('yico')
-      }, false)
+      })
+
+      // 定义一个函数，用来为指定元素绑定响应函数
+      /**
+       * 参数：
+       *  obj 要绑定事件的对象
+       *  eventStr 事件的字符串
+       *  callback 回调函数 
+       */
+      function bind (obj, eventStr, callback) {
+        if (obj.addEventListener) {
+          obj.addEventListener(eventStr, callback, false)
+        } else {
+          obj.attachEvent('on'+eventStr, function () {
+            callback.call(obj)  // 改变 this 指向，IE8 默认为 window
+          })
+        }
+      }
     }
   </script>
 </head>
