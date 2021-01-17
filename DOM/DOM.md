@@ -770,24 +770,24 @@
 
 
 18. JS 基础 - 事件的冒泡
-- 事件的冒泡（Bubble）
+  - 事件的冒泡（Bubble）
 
-- 事件的冒泡指的是事件向上传导，当后代元素上的事件被触发时，将会导致其祖先元素上的同类事件也会触发。
+  - 事件的冒泡指的是事件向上传导，当后代元素上的事件被触发时，将会导致其祖先元素上的同类事件也会触发。
 
-- 事件的冒泡大部分情况下都是有益的，如果需要取消冒泡，则需要使用事件对象来取消
+  - 事件的冒泡大部分情况下都是有益的，如果需要取消冒泡，则需要使用事件对象来取消
 
-- 可以将事件对象的cancelBubble设置为true，即可取消冒泡
+  - 可以将事件对象的cancelBubble设置为true，即可取消冒泡
 
-  - 例子：
+    - 例子：
 
-    ```javascript
-    元素.事件 = function(event){
-      event = event || window.event;
-      event.cancelBubble = true;
-    };
-    ```
+      ```javascript
+      元素.事件 = function(event){
+        event = event || window.event;
+        event.cancelBubble = true;
+      };
+      ```
 
-```11.bubble.html```
+  ```11.bubble.html```
 
 
 19. JS 基础 - 事件的委派
