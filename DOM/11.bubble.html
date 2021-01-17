@@ -17,6 +17,25 @@
   </style>
 </head>
 <body>
+  <script>
+    window.onload = function () {
+      var s1 = document.getElementById('s1')
+      var box1 = document.getElementById('box1')
+      var body = document.body
+      s1.onclick = function (event) {
+        event = event || window.event
+        event.cancelBubble = true // 阻止冒泡
+        alert('s1点击事件')
+      }
+      box1.onclick = function () {
+        alert('box1点击事件')
+      }
+      body.onclick = function () {
+        alert('body点击事件')
+      }
+    }
+  </script>
+
   <div id="box1">
     盒子box1
     <span id="s1">hello lokit</span>
