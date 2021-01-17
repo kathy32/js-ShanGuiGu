@@ -24,25 +24,40 @@
   <script>
     window.onload = function () {
       var box1 = document.getElementById('box1')
+      var box2 = document.getElementById('box2')
+      drag(box1)
+      drag(box2)
+    }
 
-      box1.onmousedown = function (event) {
+
+    // 拖拽函数
+    // 参数：开启拖拽的元素
+    function drag (obj) {
+
+      obj.onmousedown = function (event) {
+        // 解决 IE8 的连带拖拽 bug
+        obj.setCapture && obj.setCapture
         event = event || window.event
         // 需求：鼠标点击的随意，box 保持不动
-        var ol = event.clientX - box1.offsetLeft
-        var ot = event.clientY - box1.offsetTop
+        var ol = event.clientX - obj.offsetLeft
+        var ot = event.clientY - obj.offsetTop
 
         document.onmousemove = function (event) {
           event = event || window.event
           var left = event.clientX - ol
           var top = event.clientY - ot
-          box1.style.left = left + 'px'
-          box1.style.top = top + 'px'
+          obj.style.left = left + 'px'
+          obj.style.top = top + 'px'
         }
 
         document.onmouseup = function () {
           document.onmousemove = null
           document.onmouseup = null
+          obj.releaseCapture && obj.releaseCapture
         }
+
+        // 解决其他浏览器连带拖拽 bug
+        return false
       }
     }
   </script>
