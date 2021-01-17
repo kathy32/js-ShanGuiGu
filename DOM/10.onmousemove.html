@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: hotpink;
+      position: absolute;
+    }
+  </style>
+</head>
+<body style="height: 1500px;">
+  <script>
+    window.onload = function () {
+      var box = document.getElementById('box')
+      document.onmousemove = function (event) {
+        var left = event.clientX
+        var top = event.clientY
+        
+        // 兼容 IE8
+        var scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+
+
+        box.style.left = left + 'px'
+
+        // box 相对文档定位，鼠标相对可见页面定位，二者相差一个滚动距离
+        box.style.top = top + scrollTop + 'px'
+      }
+    }
+  </script>
+  <div id="box"></div>
+</body>
+</html>
