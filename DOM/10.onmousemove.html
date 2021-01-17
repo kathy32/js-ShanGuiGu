@@ -30,8 +30,16 @@
         // box 相对文档定位，鼠标相对可见页面定位，二者相差一个滚动距离
         box.style.top = top + scrollTop + 'px'
       }
+
+      // 阻止冒泡事件，无法在 box2 冒泡到 body
+      var box2 = document.getElementById('box2')
+      box2.onmousemove = function (event) {
+        event = event || window.event
+        event.cancelBubble = true
+      }
     }
   </script>
+  <div id="box2" style="width: 500px; height: 600px; background-color: lawngreen;"></div>
   <div id="box"></div>
 </body>
 </html>
