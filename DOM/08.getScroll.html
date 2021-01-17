@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #info {
+      width: 150px;
+      height: 300px;
+      overflow: auto;
+      background-color: lightblue;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      var info = document.getElementById('info')
+      var inputs = document.getElementsByTagName('input')
+      
+      info.onscroll = function () {
+        if (info.scrollHeight - info.scrollTop === info.clientHeight) {
+          inputs[0].disabled = false  // 表示可点击
+          inputs[1].disabled = false
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h3>注册登陆须知</h3>
+  <p id="info">
+    注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知
+    注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知
+    注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知
+    注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知
+    注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知注册登陆须知
+  </p>
+  <input type="checkbox" disabled='disabled'/>已阅读
+  <input type="submit" value="注册" disabled='disabled'/>
+</body>
+</html>
