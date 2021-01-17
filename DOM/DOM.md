@@ -647,6 +647,100 @@
 
 
 15. JS 基础 - 其他样式相关的属性
+  - 注意：以下样式都是只读的，不可修改。不带 ```px``` 单位，可直接进行计算
+  - ```clientHeight``` 元素的可见高度，指元素的内容区和内边距的高度（width + padding）
+  - ```clientWidth``` 元素的可见宽度，指元素的内容区和内边距的宽度
+  - ```offsetHeight``` 整个元素的高度，包括内容区、内边距、边框（width + padding + border）
+  - ```offfsetWidth``` 整个元素的宽度，包括内容区、内边距、边框
+  - ```offsetParent``` 当前元素的定位父元素
+    - 离他最近的开启了定位的祖先元素（不为 static），如果所有的元素都没有开启定位，则返回body
+  - ```offsetLeft``` 和 ```offsetTop``` 当前元素和定位父元素（offsetParent）之间的偏移量
+    - offsetLeft水平偏移量  offsetTop垂直偏移量
+  - ```scrollHeight``` 和 ```scrollWidth``` 获取元素滚动区域的高度和宽度
+  - ```scrollTop``` 和 ```scrollLeft``` 获取元素垂直和水平滚动条滚动的距离
+  - 判断滚动条是否滚动到底：
+    - 垂直滚动条：```scrollHeight - scrollTop = clientHeight```
+    - 水平滚动：```scrollWidth - scrollLeft = clientWidth```
+  - ```07.getStyleWidth.html```
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      #box01 {
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+        border: 10px solid greenyellow;
+        background-color: hotpink;
+      }
+
+      #box04 {
+        width: 200px;
+        height: 300px;
+        background-color: indianred;
+        overflow: auto;
+      }
+
+      #box05 {
+        width: 150px;
+        height: 800px;
+        background-color: lightblue;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        var btn01 = document.getElementById('btn01')
+        var box01 = document.getElementById('box01')
+        btn01.onclick = function () {
+          alert(box01.clientHeight) // 120
+
+          alert(box01.offsetWidth)  // 140
+          alert(box01.offsetParent) // [object HTMLBodyElement]
+          alert(box01.offsetLeft) // 8，相对于 body 有个默认间距
+        }
+
+        var btn02 = document.getElementById('btn02')
+        var box05 = document.getElementById('box05')
+        var box04 = document.getElementById('box04')
+        btn02.onclick = function () {
+          alert(box05.scrollHeight) // 800
+          alert(box05.clientHeight) // 800
+          alert(box04.scrollHeight) // 800，重点关注，可滚动的区域大于自身高度
+          alert(box04.clientHeight) // 300  
+
+          alert(box04.scrollTop)  // 178，随意滚动的高度
+          alert(box04.scrollHeight - box04.scrollTop) // 300，滚动到底部时，值为 box04.clientHeight
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="contaner">
+      <button id="btn01">按钮1</button>
+      <br>
+      <br>
+      <div id="box01"></div>
+    </div>
+
+    <br>
+    <br>
+
+    <button id="btn02">按钮2</button>
+    <br>
+    <br>
+    <div id="box04">
+      <div id="box05"></div>
+    </div>
+  </body>
+  </html>
+  ```
+
+
 16. JS 基础 - 事件对象
 17. JS 基础 - div 跟随鼠标移动
 18. JS 基础 - 事件的冒泡
