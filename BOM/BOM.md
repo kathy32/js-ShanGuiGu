@@ -86,6 +86,48 @@
     
 
 3. JS 基础 - Location
+  - 如果直接打印 ```location``` ，则可以获取到地址栏的信息（当前页面的完整路径）
+
+  - 如果直接将 ```location``` 属性修改为一个完整的路径，或相对路径，则页面会自动跳转到该路径，并生成相应的历史记录
+
+    ```javascript
+    location = 'http://www.baidu.com'
+    location = '01.BOM.html'
+    ```
+
+  - 其他属性：
+
+    - ```hash``` #开始的
+    - ```host``` 主机名和端口号
+    - ```hostname``` 当前 URL 主机名
+    - ```href  ```返回完整的 URL
+    - ```pathname``` URL 路径部分
+    - ```port``` URL 端口号
+
+  - 方法：
+
+    - ```assign()``` 跳转到其他页面，功能同直接修改 location 值
+
+      ```javascript
+      location.assign('http://www.baidu.com')
+      ```
+
+    - ```reload()``` 用于重新加载当前页面，作用和刷新按钮一样
+
+      ```javascript
+      location.reload(true)	// true 表示强制清空缓存，作用同 ctrl+F5
+      ```
+
+    - ```replace()``` 用于一个新的页面替换当前页面，
+
+      - 调用完毕也会跳转页面，
+      - 但是不会生产历史记录，不能回退
+
+      ```javascript
+      location.replace('http://www.baidu.com')
+      ```
+
+      
 
 4. JS 基础 - 定时器简介
 
