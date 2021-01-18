@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: hotpink;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      var box = document.getElementById('box')
+
+      // 需求：向下滚变长，向上滚变短
+      box.onmousewheel = function (event) {
+        event = event || window.event
+        // 获取滚轮方向
+        if (event.wheelDelta>0 || event.detail<0) {
+          // 向上滚
+          box.style.height = box.clientHeight - 10 + 'px'
+        } else {
+          // 向下滚
+          box.style.height = box.clientHeight + 10 + 'px'
+        }
+      }
+
+      // onmousewheel 火狐不支持
+      bind(box, 'DOMMouseScroll', box.onmousewheel)
+
+
+      // 3. 但是 IE8 不支持 event.preventDefault()
+      event.preventDefault() && event.preventDefault()
+
+      // 1. 当浏览器有滚动条时，滚动条会随之滚动，希望取消
+      return false
+
+      // 2. 但是 return false 不适用于 addEventListener() 方法
+      // event.preventDefault()
+
+      
+    }
+
+
+    function bind (obj, eventStr, callback) {
+      if (obj.addEventListener) {
+        obj.addEventListener(eventStr, callback, false)
+      } else {
+        obj.attachEvent('on'+eventStr, callback)
+      }
+    }
+  </script>
+</head>
+<body style="height: 1500px;">
+  <div id="box"></div>
+</body>
+</html>
