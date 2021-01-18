@@ -925,4 +925,50 @@
 
 
 25. JS 基础 - 键盘事件
+  - 键盘事件：
+
+    - ```onkeydown``` 按键被按下
+      - 对于 ```onkeydown``` 来说，如果一直按着某个按键不松手，则事件会一直触发
+      - 当 ```onkeydown``` 连续触发时，第一次和第二次之间会间隔稍微长一点，其他的会非常快，为了防止操作错误的发生
+    - ```onkeyup``` 按键被松开
+
+  - 键盘事件一般绑定给一些可以获取到焦点的对象或是 document
+
+  - 可以通过 ```keyCode``` 来获取按键的编码，通过它可以判断哪个按键被按下
+
+    - 除了 ```keyCode``` 事件对象中还提供了几个属性: ```altKey```, ```ctrlKey```, ```shiftKey```，判断其是否被按下，按下返回 true
+
+    ```html
+    <script>
+      window.onload = function () {
+    
+        document.onkeydown = function (event) {
+          event = event || window.event
+    
+          // 判断 y 和 ctrl 键是否同时按下
+          if (event.keyCode===89 && event.ctrlKey) {
+            console.log('y+ctrl')
+          }
+        }
+    
+        document.onkeyup = function () {
+    
+        }
+      }
+    </script>
+    ```
+
+  - 在文本框中输入内容，属于 onkeydown 的默认行为，如果在 onkeydown 中取消了默认行为，则输入的内容不会出现在文本框中
+
+    ```javascript
+    var input = document.getElementsByTagName('input')[0]
+    input.onkeydown = function () {
+      // 需求：限制不能输入数字
+      if (event.keyCode>=48 && event.keyCode<=57) {
+        return false
+      }
+    }
+    ```
+
+  
 26. JS 基础 - 键盘移动 div

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    window.onload = function () {
+
+      // document.onkeydown = function (event) {
+      //   event = event || window.event
+
+      //   // 判断 y 和 ctrl 键是否同时按下
+      //   if (event.keyCode===89 && event.ctrlKey) {
+      //     console.log('y+ctrl')
+      //   }
+      // }
+
+      // document.onkeyup = function () {
+
+      // }
+
+
+      var input = document.getElementsByTagName('input')[0]
+      input.onkeydown = function () {
+        // 需求：限制不能输入数字
+        if (event.keyCode>=48 && event.keyCode<=57) {
+          return false
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <input type="text" id="inp">
+</body>
+</html>
