@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    #outer {
+      width: 248px;
+      height: 150px;
+      margin: 50px auto;
+      padding: 10px 0;
+      background-color: aquamarine;
+      position: relative;
+      overflow: hidden;
+    }
+    img {
+      width: 248px;
+      height: 150px;
+    }
+    #imglist {
+      display: flex;
+      position: absolute;
+      left: 0;
+    }
+    #imglist li {
+      list-style: none;
+      /* margin: 0 10px; */
+    }
+    #navDiv {
+      position: absolute;
+      display: flex;
+      bottom: 12px;
+    }
+    #navDiv a {
+      width: 8px;
+      height: 8px;
+      margin-left: 3px;
+      background-color: red;
+      opacity: 50%;
+      /* 适配 IE8 */
+      filter: alpha(opacity=50);
+    }
+    #navDiv a:hover {
+      background-color: black;
+      opacity: 50%;
+    }
+  </style>
+  <script src="./tools.js"></script>
+  <script>
+    window.onload = function () {
+      var navDiv = document.getElementById('navDiv')
+      var outer = document.getElementById('outer')
+      var imglist = document.getElementById('imglist')
+      var imgArr = document.getElementsByTagName('img')
+
+      // 居中小按钮
+      navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth) / 2 + 'px'
+
+      // 显示图片对应小按钮
+      var index = 0
+      var allA = document.getElementsByTagName('a')
+      allA[index].style.backgroundColor = 'black'
+
+      // 切换图片
+      for (var i=0; i<allA.length; i++) { // 此处必须为 let
+        allA[i].num = i
+        allA[i].onclick = function () {
+          clearInterval(timer)
+          index = this.num
+          // imglist.style.left = -248 * i + 'px'
+          setA()
+          move(imglist, 'left', -248 * index, 20, function () {
+            autoChange()
+          })
+          allA[i].style.backgroundColor = 'black'
+        }
+      }
+
+      autoChange()
+
+      function setA () {
+        if (index >= imgArr.length-1) {
+          index = 0
+          // 此时显示的最后一张图片，通过css将最后一张切换成第一张
+          imglist.style.left = 0
+        }
+        for (var i=0; i<allA.length; i++) {
+          // 内联样式背景颜色去掉了，用原来的 red
+          // 这样可以防止多次点击后，多个变为 black 背景
+          allA[i].style.backgroundColor = ''
+        }
+        allA[index].style.backgroundColor = 'black'
+      }
+
+      var timer
+      // 自动切换图片
+      function autoChange () {
+        timer = setInterval(function () {
+          index++
+          index %= imgArr.length
+          move(imglist, 'left', -248 * index, 20, function () {
+            setA()
+          })
+        },1000)
+      }
+    }
+
+    
+  </script>
+</head>
+<body>
+  <div id="outer">
+    <ul id="imglist">
+      <li><img src="./img/1.png" alt=""></li>
+      <li><img src="./img/2.png" alt=""></li>
+      <li><img src="./img/3.png" alt=""></li>
+      <li><img src="./img/4.png" alt=""></li>
+      <li><img src="./img/1.png" alt=""></li>
+    </ul>
+    <div id="navDiv">
+      <a href="javascript:;"></a>
+      <a href="javascript:;"></a>
+      <a href="javascript:;"></a>
+      <a href="javascript:;"></a>
+    </div>
+  </div>
+  
+</body>
+</html>
