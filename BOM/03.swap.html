@@ -57,13 +57,13 @@
       var outer = document.getElementById('outer')
       var imglist = document.getElementById('imglist')
       var imgArr = document.getElementsByTagName('img')
+      var allA = document.getElementsByTagName('a')
 
       // 居中小按钮
       navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth) / 2 + 'px'
 
       // 显示图片对应小按钮
       var index = 0
-      var allA = document.getElementsByTagName('a')
       allA[index].style.backgroundColor = 'black'
 
       // 切换图片
