@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    #box1 {
+      width: 100px;
+      height: 100px;
+      background-color: hotpink;
+      position: absolute;
+      /* 适配 IE 的 auto 问题 */
+      left: 0;  
+    }
+    #box2 {
+      border-left: 1px solid black;
+      width: 0;
+      height: 1000px;
+      position: absolute;
+      left: 800px;
+      top: 0;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      var btn1 = document.getElementById('btn1')
+      var box1 = document.getElementById('box1')
+      var timer
+
+      btn1.onclick = function () {
+        clearInterval(timer)
+        timer = setInterval(function () {
+          var oldVal = parseInt(getStyle(box1, 'left'))
+          var newVal = oldVal + 10 
+          if (newVal > 800) {
+            newVal = 800
+          }
+          box1.style.left = newVal + 'px'
+        },30)
+
+        // 停止
+        if (newVal === 800) {
+          clearInterval(timer)
+        }
+      }
+    }
+
+    function getStyle (obj, name) {
+      if (window.getComputedStyle) {  // IE8，getComputedStyle 是 window 一个属性
+        return getComputedStyle(obj, null)[name]
+      } else {
+        return obj.getComputedStyle[name]
+      }
+    }
+  </script>
+</head>
+<body>
+  <button id="btn1">向右移动按钮</button>
+  <br>
+  <br>
+  <div id="box1"></div>
+  <div id="box2"></div>
+</body>
+</html>
