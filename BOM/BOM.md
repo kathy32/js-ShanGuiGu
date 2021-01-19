@@ -162,9 +162,41 @@
 ```01.changeImg.html```
 
 6. JS 基础 - 修改 div 移动练习
+  - 解决第一次到第二次之间的卡顿问题
 
+  ```DOM/17.divMoveKeyEvent.html```
 
 7. JS 基础 - 延时调用
+  - 延时调用一个函数不立即执行，而是隔一段时间以后再执行，而且只执行一次
+
+    ```javascript
+    var num = 1
+    var timer = setTimeout(function () {
+      console.log(num++)
+    },200)
+    // 使用 clearTimeout() 来关闭一个延时调用
+    clearTimeout(timer)
+    ```
+
+  - 延时调用和定时调用区别：
+
+    - 定时调用会多次执行
+    - 延时调用只执行一次
+
+  - 延时调用和定时调用实际上是可以相互替代的，根据需求用
+
+  - 因为 `setInterval` 在一些情况下，会导致前后两次定时器代码的执行间隔产生不可预料的变化，甚至会**跳过某次定时器代码的执行**，所以可用 `setTimeout` 实现 `setInterval` 的功能。
+
+    ```javascript
+    const repeat = (func, ms) => {
+      setTimeout(() => {
+        func()
+        repeat(func, ms)	// 递归
+      }, ms)
+    }
+    ```
+
+  
 
 8. JS 基础 - 定时器的应用
 
