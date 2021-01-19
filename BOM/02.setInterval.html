@@ -25,45 +25,53 @@
       left: 800px;
       top: 0;
     }
+    #box3 {
+      width: 100px;
+      height: 100px;
+      background-color: coral;
+      position: absolute;
+      top: 300px;
+    }
   </style>
+  <script src="./tools.js"></script>
   <script>
     window.onload = function () {
       var btn1 = document.getElementById('btn1')
+      var btn2 = document.getElementById('btn2')
+      var btn3 = document.getElementById('btn3')
+      var btn4 = document.getElementById('btn4')
       var box1 = document.getElementById('box1')
-      var timer
+      var box3 = document.getElementById('box3')
 
       btn1.onclick = function () {
-        clearInterval(timer)
-        timer = setInterval(function () {
-          var oldVal = parseInt(getStyle(box1, 'left'))
-          var newVal = oldVal + 10 
-          if (newVal > 800) {
-            newVal = 800
-          }
-          box1.style.left = newVal + 'px'
-        },30)
-
-        // 停止
-        if (newVal === 800) {
-          clearInterval(timer)
-        }
+        move(box1, 'left', 800, 10)
       }
-    }
 
-    function getStyle (obj, name) {
-      if (window.getComputedStyle) {  // IE8，getComputedStyle 是 window 一个属性
-        return getComputedStyle(obj, null)[name]
-      } else {
-        return obj.getComputedStyle[name]
+      btn2.onclick = function () {
+        move(box1, 'left', 0, 10)
+      }
+
+      btn3.onclick = function () {
+        move(box3, 'left', 800, 20)
+      }
+
+      btn4.onclick = function () {
+        move(box3, 'width', 800, 20, function () {
+          move(box3, 'height', 300, 20)
+        })
       }
     }
   </script>
 </head>
 <body>
   <button id="btn1">向右移动按钮</button>
+  <button id="btn2">向左移动按钮</button>
+  <button id="btn3">box3向右移动</button>
+  <button id="btn4">box3宽度</button>
   <br>
   <br>
   <div id="box1"></div>
   <div id="box2"></div>
+  <div id="box3"></div>
 </body>
 </html>
