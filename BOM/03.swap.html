@@ -62,12 +62,12 @@
       // 居中小按钮
       navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth) / 2 + 'px'
 
-      // 显示图片对应小按钮
+      // 初始化显示图片对应小按钮
       var index = 0
       allA[index].style.backgroundColor = 'black'
 
       // 切换图片
-      for (var i=0; i<allA.length; i++) { // 此处必须为 let
+      for (var i=0; i<allA.length; i++) { 
         allA[i].num = i
         allA[i].onclick = function () {
           clearInterval(timer)
