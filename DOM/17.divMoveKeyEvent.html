@@ -14,23 +14,18 @@
   </style>
   <script>
     window.onload = function () {
-
       var box = document.getElementById('box')
 
-      document.onkeydown = function (event) {
-        var spped = 10
-        event = event || window.event
-
-        if (event.shiftKey) {
-          spped = 500 // 按下 shift 加速
-        }
-
+      var timer 
+      var spped = 10
+      var dir = 0
+      timer = setInterval(function () {
         // 需求：更具按键上下左右移动
         // 左 37
         // 上 38
         // 右 39
         // 下 40
-        switch (event.keyCode) {
+        switch (dir) {
           case 37:
             box.style.left = box.offsetLeft - spped + 'px'
             break
@@ -43,6 +38,22 @@
           case 40:
             box.style.top = box.offsetTop + spped + 'px'
         }
+      },100)
+
+
+      document.onkeydown = function (event) {
+        event = event || window.event
+        if (event.shiftKey) {
+          spped = 500 // 按下 shift 加速
+        } else {
+          spped = 10
+        }
+        dir = event.keyCode // 重难点，为 dir 方向传值
+      }
+
+      // 停止
+      document.onkeyup = function () {
+        dir = 0
       }
       
 
