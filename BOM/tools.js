@@ -1,3 +1,4 @@
+// 1. 获取样式
 function getStyle (obj, name) {
   if (window.getComputedStyle) {  // IE8，getComputedStyle 是 window 一个属性
     return getComputedStyle(obj, null)[name]
@@ -7,7 +8,7 @@ function getStyle (obj, name) {
 }
 
 
-// 封装一个动画函数
+// 2. 封装一个动画函数
 /*
  * 参数：
  *  obj：要执行动画的对象
@@ -44,4 +45,38 @@ function move (obj, attr, target, speed, callback) {
       callback && callback()
     }
   },30)
+}
+
+
+// 3. 定义一个函数，用来向一个元素中添加指定的 class 属性值
+/*
+  * 参数：
+  *   obj 要添加 class 属性的元素
+  *   cn  要添加的 class 值
+  */
+function addClass (obj, cn) {
+  if (!hasClass(obj, cn)) {
+    obj.className += ' ' + cn
+  }
+}
+
+// 4. 判断一个元素中有没有指定的 class 属性值
+function hasClass (obj, cn) {
+  var reg = new RegExp('\\b' + cn + '\\b')
+  return reg.test(obj.className)
+}
+
+// 5. 删除一个指定的 class
+function removeClass (obj, cn) {
+  var reg = new RegExp('\\b' + cn + '\\b')
+  obj.className = obj.className.replace(reg, '')
+}
+
+// 6. 切换类，有删，无加
+function toggleClass (obj, cn) {
+  if (!hasClass(obj, cn)) {
+    addClass(obj, cn)
+  } else {
+    removeClass(obj, cn)
+  }
 }

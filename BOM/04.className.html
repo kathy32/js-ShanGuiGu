@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .b1 {
+      width: 100px;
+      height: 100px;
+      background-color: hotpink;
+    }
+    .b2 {
+      width: 200px;
+      height: 200px;
+      background-color: lawngreen;
+    }
+  </style>
+  <script src="./tools.js"></script>
+  <script>
+    window.onload = function () {
+      // 目标：通过改变类来减少 css 渲染次数，性能优化
+      var box = document.getElementsByClassName('b1')[0]
+      var btn = document.getElementById('btn')
+      btn.onclick = function () {
+        // addClass(box, 'b2')
+        // removeClass(box, 'b1')
+        toggleClass(box, 'b2')
+      }
+    }
+  </script>
+</head>
+<body>
+  <button id="btn">按钮改变样式</button>
+  <br>
+  <br>
+  <div class="b1"></div>
+</body>
+</html>
