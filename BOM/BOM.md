@@ -259,3 +259,59 @@
 13. JS 基础 - 二级菜单 - 过渡效果
 
 14. JS 基础 - JSON
+  - JS 中的对象只有 JS 自己认识，其他的语言都不认识
+
+  - JSON 就是一个特殊格式的字符串，这个字符串可以被任意的语言识别
+
+    - 并且可以转换为任意语言中的对象，JSON 在开发中主要用来数据交互
+
+  - Javascript Object Notation JS 对象表示法
+
+    - JSON 和 JS 对象的格式一样，只不过 JSON 字符串中的**属性名必须加双引号**
+
+    - 其他和 js 语法一致
+
+      ```json
+      var obj = '{
+        "name":"loki",
+        "height":188
+        }'
+      
+      var arr = '[1,2,true,"hello"]'
+      ```
+
+  - JSON 分类：
+
+    - 对象 {}
+
+    - 数组 []
+
+  - JSON 中允许的值：
+
+    - 字符串
+    - 数值
+    - 布尔值
+    - null
+    - 对象
+    - 数组
+
+  - 将 JSON 字符串转换为 JS 对象，并返回该对象
+
+    - 工具类：```JSON```
+
+    - ```JSON.parse()```
+
+      ```javascript
+      var arr = '[1,2,true,"hello"]'
+      JSON.parse(arr)
+      ```
+
+  - 将 JS 对象转换为 JSON 字符串
+
+    - ```JSON.stringify()```
+    - 需要一个 JS 对象作为参数。返回一个 JSON 字符串
+
+  - IE7 以下不兼容
+
+    - 解决办法：```eval()``` 会将 {} 当成代码块
+    - 最好不用，性能和安全问题
