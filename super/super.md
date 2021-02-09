@@ -216,6 +216,37 @@
 
 
 27. 常见的闭包
+  - 将函数作为另一个函数的**返回值**
+
+    ```javascript
+    function fn1 () {
+      var a = 2 // 打点在此处时已经有 fn2 了，因为函数提升优先
+      function fn2 () {
+        a++
+        console.log(a)
+      }
+      return fn2
+    }
+    var f = fn1()
+    f() // 3
+    f() // 4
+    
+    ```
+
+    ![image-20210209155837092](/Users/apple/Library/Application Support/typora-user-images/image-20210209155837092.png)
+
+  - 将函数作为**实参**传递给另一个函数调用
+
+    ```javascript
+    function showDelay (msg, timer) {
+      setTimeout(function () {
+        console.log(msg)
+      }, timer)
+    }
+    showDelay('lokit', 3000)
+    ```
+
+  
 28. 闭包的作用
 29. 闭包的生命周期
 30. 闭包应用 - 自定义 js 模块
