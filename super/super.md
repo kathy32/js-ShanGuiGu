@@ -233,8 +233,6 @@
     
     ```
 
-    ![image-20210209155837092](/Users/apple/Library/Application Support/typora-user-images/image-20210209155837092.png)
-
   - 将函数作为**实参**传递给另一个函数调用
 
     ```javascript
