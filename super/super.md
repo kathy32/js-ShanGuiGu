@@ -154,6 +154,45 @@
 
 
 25. 循环遍历加监听
+  - 案例：
+
+  ```html
+  <body>
+    <button>测试1</button>
+    <button>测试2</button>
+    <button>测试3</button>
+
+    <script>
+      // 需求：点击某个按钮，提示“点击的是第 n 个按钮”
+      // 错误方案
+      var btns = document.getElementsByTagName('button')
+      for (var i=0; i<btns.length; i++) {
+        btns[i].onclick = function () {
+          console.log(`点击的是第 ${i+1} 个按钮`) // 永远是 i = 2
+        }
+      }
+
+      // 更改方案1：定义一个变量
+      for (var i=0; i<btns.length; i++) {
+        btns[i].index = i
+        btns[i].onclick = function () {
+          console.log(`点击的是第 ${this.index+1} 个按钮`) 
+        }
+      }
+
+      // 更改方案2：立即执行函数
+      for (var i=0; i<btns.length; i++) {
+        (function (i) {
+          btns[i].onclick = function () {
+            console.log(`点击的是第 ${i+1} 个按钮`)
+          }
+        })(i)
+      }
+    </script>
+  </body>
+  ```
+
+
 26. 闭包理解
 27. 常见的闭包
 28. 闭包的作用
