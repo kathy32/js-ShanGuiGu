@@ -346,6 +346,76 @@
 
 
 31. 内存溢出与内存泄漏
+  - 缺点：
+
+    - 函数执行完后，函数内的**局部变量没有释放**，占用内存时间会变长
+    - 容易造成内存泄漏
+
+    ```javascript
+    function fn1 () {
+      var arr = new Array[1000]
+      function fn2 () {
+        console.log(arr.length)
+      }
+      return fn2
+    }
+    var f = fn1()
+    f()
+    ```
+
+  - 解决：
+
+    - 能不用闭包就不用
+    - 及时释放
+
+  - 内存溢出：
+
+    - 一种程序运行出现的错误
+    - 当程序运行需要的内存超过了剩余的内存时，就抛出内存溢出的错误
+
+    ```javascript
+    var obj = {}
+    for (var i=0; i<1000; i++) {
+      obj[i] = new Array(1000000)
+      console.log('---')
+    }
+    ```
+
+  - 内存泄露：
+
+    - 占用的内存没有及时释放
+    - 内存泄露积累了就容易导致内存溢出
+    - 常见的内存泄露：
+      - 意外的全局变量
+      - 没有及时清理的计时器或回调函数
+      - 闭包
+
+    ```javascript
+    // 意外的全局变量
+    function fn () {
+      a = 3
+      console.log(a)
+    }
+    fn()
+    
+    // 没有及时清理的计时器或回调函数
+    setInterval(function () {	// 启动循环定时器后不清理
+      console.log('---')
+    }, 300)
+    
+    // 闭包
+    function fn1 () {
+      var a = 4
+      function fn2 () {
+        console.log(++a)
+      }
+      return fn2
+    }
+    var f = fn1()
+    f()	// 闭包未释放
+    ```
+
+  
 32. 面试题
 33. 对象创建模式
 34. 原型链继承
