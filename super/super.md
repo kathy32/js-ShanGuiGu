@@ -417,6 +417,50 @@
 
   
 32. 面试题
+  - 题目一：
+
+    ```javascript
+    var name = 'The window'
+    var object = {
+      name: 'My Object',
+      getNameFunc: function () {
+        return function () {
+          return this.name
+        }
+      }
+    }
+    console.log(object.getNameFunc()()) // The window
+    
+    var name2 = 'The window'
+    var object2 = {
+      name2: 'My Object',
+      getNameFunc: function () {
+        var that = this
+        return function () {
+          return that.name2
+        }
+      }
+    }
+    console.log(object2.getNameFunc()())  // My Object
+    ```
+
+  - 题目二：
+
+    ```javascript
+    function fun (n, o) {
+      console.log(o)
+      return {
+        fun: function (m) {
+          return fun(m, n)
+        }
+      }
+    }
+    var a = fun(0); a.fun(1); a.fun(2); a.fun(3); // undefined,0,0,0
+    var b = fun(0).fun(1).fun(2).fun(3);  // undefined,1,2
+    var c = fun(0).fun(1);  c.fun(2); c.fun(3); // undefined,1,1
+    ```
+
+  
 33. 对象创建模式
 34. 原型链继承
 35. 组合继承
