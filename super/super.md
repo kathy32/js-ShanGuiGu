@@ -288,6 +288,63 @@
 
 
 30. 闭包应用 - 自定义 js 模块
+  - 具有特定功能的 js 文件
+  - 将所有的数据和功能都封装在一个函数内部（私有的）
+  - 只向外暴露一个包含 n 个方法的对象或函数
+  - 模块的使用者，只需要通过模块暴露的对象调用方法来实现对应的功能
+
+  ```javascript
+  // 方式一：
+  function myModule () {
+    // 私有数据
+    var msg = 'Lokit'
+    // 操作数据的函数
+    function doSomething () {
+      console.log('doSomething()' + msg.toUpperCase())
+    }
+    function doOtherthing () {
+      console.log('doOtherthing()' + msg.toLowerCase())
+    }
+    // 向外暴露对象（给外部使用的方法）
+    return {
+      doSomething: doSomething,
+      doOtherthing: doOtherthing
+    }
+  }
+
+  // 方式二：匿名函数自调用（推荐）
+  (function (window) {
+    var msg = 'Lokit'
+    function doSomething () {
+      console.log('doSomething()' + msg.toUpperCase())
+    }
+    function doOtherthing () {
+      console.log('doOtherthing()' + msg.toLowerCase())
+    }
+    window.myModule2 = {
+      doSomething: doSomething,
+      doOtherthing: doOtherthing
+    }
+  })(window)
+  ```
+
+  ```html
+  <script src='myModule.js'></script>
+  <!-- 方式一 -->
+  <script>
+    var module = myModule()
+    module.doSomething()
+    module.doOtherthing()
+  </script>
+
+  <!-- 方式二 -->
+  <script>
+    myModule2.doSomething()
+    myModule2.doOtherthing()
+  </script>
+  ```
+
+
 31. 内存溢出与内存泄漏
 32. 面试题
 33. 对象创建模式
