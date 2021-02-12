@@ -462,6 +462,101 @@
 
   
 33. 对象创建模式
+  - 方式一：```object``` 构造函数模式
+
+    - 套路：先创建空 object 对象，再动态添加属性和方法
+    - 适用场景：起始时不确定对象内部数据
+    - 问题：语句太多
+
+    ```javascript
+    var p = new Object()
+    p.name = 'loki'
+    p.age = 12
+    p.setName = function (name) {
+      this.name = name
+    }
+    p.setName('yico')
+    console.log(p.name, p.age)	// yico, 12
+    ```
+
+  - 方式二：对象字面量模式
+
+    - 套路：使用 {} 创建对象，同时指定属性和方法
+    - 适用场景：起始时对象内部数据是确定的
+    - 问题：如果创建多个对象，有重复代码
+
+    ```javascript
+    var p = {
+      name: 'lokit',
+      age: 12,
+      setName: function (name) {
+        this.name = name
+      }
+    }
+    p.setName('yico')
+    console.log(p.name, p.age)	// yico, 12
+    ```
+
+  - 方式三：工厂模式
+
+    - 套路：通过工厂函数动态创建对象并返回
+    - 使用场景：需要创建多个对象
+    - 问题：对象没有一个具体的类型，都是 Object 类型
+
+    ```javascript
+    // 工厂函数：返回一个对象的函数
+    function createPerson (name, age) {
+      var obj = {
+        name: name,
+        age: age,
+        setName: function (name) {
+          this.name = name
+        }
+      }
+      return obj
+    }
+    // 创建多个对象
+    var p1 = new createPerson('lokit', 13)
+    var p2 = new createPerson('yico', 18)
+    
+    function createDog (name, price) {
+      var obj = {
+        name: name,
+        price: price
+      }
+      return obj
+    }
+    var d1 = new createDog('mantou', 2000)
+    ```
+
+  - 方式四：自定义构造函数模式
+
+    - 套路：自定义构造函数，通过 new 创建对象
+    - 适用场景：**需要创建多个类型确定的对象**
+    - 问题：每个对象都有相同的数据，浪费内存
+
+    ```javascript
+    function Person (name, age) {
+      this.name = name
+      this.age = age
+    }
+    Person.prototype.setName = function (name) {
+      this.name = name
+    }
+    var p1 = new Person('lokit', 23)
+    p1.setName('yico')
+    console.log(p1.name)  // yico
+    console.log(p1 instanceof Person) // true
+    
+    function Dog (name, price) {
+      this.name = name
+      this.price = price
+    }
+    var d1 = new Dog('mantou', 3)
+    console.log(d1 instanceof Dog)  // true
+    ```
+
+    
 34. 原型链继承
 35. 组合继承
 36. 复习
