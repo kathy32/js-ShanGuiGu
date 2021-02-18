@@ -607,6 +607,39 @@
 
   
 35. 组合继承
+  - 原型链 + 借用构造函数的组合继承
+
+    1.利用原型链实现对父类型对象的方法继承
+
+    2.利用 ```super()``` 借用父类型构建函数初始化相同属性
+
+  ```javascript
+  function Person (name, age) {
+    this.name = name
+    this.age = age
+  }
+  Person.prototype.setName = function (name) {
+    this.name = name
+  }
+
+  function Student (name, age, grade) {
+    Person.call(this, name, age)  // 继承属性
+    this.grade = grade
+  }
+  // 继承方法
+  Student.prototype = new Person()
+  Student.prototype.constructor = Student // 修正 constructor 属性
+  Student.prototype.setGrade = function (grade) {
+    this.grade = grade
+  }
+
+  var s1 = new Student('Lokit', 27, 99)
+  s1.setName('yico')
+  s1.setGrade(98)
+  console.log(s1.name, s1.age, s1.grade)  // yico 27 98
+  ```
+
+
 36. 复习
 37. 闭包终极面试题
 38. 进程与线程
