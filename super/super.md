@@ -621,38 +621,103 @@
 
   
 35. 组合继承
-  - 原型链 + 借用构造函数的组合继承
-
-    1.利用原型链实现对父类型对象的方法继承
-
-    2.利用 ```super()``` 借用父类型构建函数初始化相同属性
+  - 背景
 
   ```javascript
-  function Person (name, age) {
-    this.name = name
-    this.age = age
+  // 父类型
+  function Supper () {
+    this.superProp = 'superProp'
   }
-  Person.prototype.setName = function (name) {
-    this.name = name
-  }
-
-  function Student (name, age, grade) {
-    Person.call(this, name, age)  // 继承属性
-    this.grade = grade
-  }
-  // 继承方法
-  Student.prototype = new Person()
-  Student.prototype.constructor = Student // 修正 constructor 属性
-  Student.prototype.setGrade = function (grade) {
-    this.grade = grade
+  Supper.prototype.showSuperProp = function () {
+    console.log(this.superProp)
   }
 
-  var s1 = new Student('Lokit', 27, 99)
-  s1.setName('yico')
-  s1.setGrade(98)
-  console.log(s1.name, s1.age, s1.grade)  // yico 27 98
+  // 子类型
+  function Sub () {
+    this.subProp = 'subProp'
+  }
+  Sub.prototype.showSubProp = function () {
+    console.log(this.subProp)
+  }
+
+  // 关键步骤！
+  // 子类型的原型为父类型的一个实例对象
+  Sub.prototype = new Supper()
+  // 让子类型的原型的 constructor 指向子类型
+  Sub.prototype.constructor = Sub
+
+  var sub1 = new Sub()
+  sub1.showSuperProp()
   ```
 
+  - 借用构造函数继承
+
+    - 套路：
+
+      1.定义父类型构造函数
+
+      2.定义子类型构造函数
+
+      3.在子类型构造函数中调用父类型构造
+
+    - 关键：
+
+      1.**在子类型构造函数中通过 ```call()``` 调用父类型构造函数**
+
+    ```javascript
+    function Person (name, age) {
+      this.name = name
+      this.age = age
+    }
+    
+    function Student (name, age, grade) {
+      Person.call(this, name, age)
+      this.grade = grade
+    }
+    
+    var s1 = new Student('Lokit', 27, 99)
+    console.log(s1.name, s1.age, s1.grade)  // Lokit 27 99
+    ```
+
+  - 组合继承
+
+    - 原型链 + 借用构造函数的组合继承
+
+      1.利用原型链实现对父类型对象的方法继承
+
+      2.利用``` call()``` 借用父类型构建函数初始化相同属性
+
+    ```javascript
+    function Person (name, age) {
+      this.name = name
+      this.age = age
+    }
+    Person.prototype.setName = function (name) {
+      this.name = name
+    }
+    
+    function Student (name, age, grade) {
+      Person.call(this, name, age)  // 继承属性
+      this.grade = grade
+    }
+    // 继承方法
+    Student.prototype = new Person()
+    Student.prototype.constructor = Student // 修正 constructor 属性
+    Student.prototype.setGrade = function (grade) {
+      this.grade = grade
+    }
+    
+    var s1 = new Student('Lokit', 27, 99)
+    s1.setName('yico')
+    s1.setGrade(98)
+    console.log(s1.name, s1.age, s1.grade)  // yico 27 98
+    ```
+
+  - new 一个对象背后做了什么？
+
+    - 创建一个空对象
+    - **给对象设置```__proto__```，值为构造函数对象的 ```prototype``` 属性值```this.__proto__ = Fn.prototype```**
+    - 执行构造函数体（给对象添加属性/方法）
 
 36. 复习
 37. 闭包终极面试题
