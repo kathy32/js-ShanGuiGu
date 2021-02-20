@@ -533,7 +533,7 @@
 
     - 套路：自定义构造函数，通过 new 创建对象
     - 适用场景：**需要创建多个类型确定的对象**
-    - 问题：每个对象都有相同的数据，浪费内存
+    - 问题：每个对象都有相同的数据（方法），浪费内存
 
     ```javascript
     function Person (name, age) {
@@ -555,6 +555,20 @@
     var d1 = new Dog('mantou', 3)
     console.log(d1 instanceof Dog)  // true
     ```
+  - 方式五：构造函数+原型的组合模式
+
+    ```javascript
+    function Person (name, age) {
+      this.name = name
+      this.age = age
+    }
+    Person.prototype.setName = function (name) {
+      this.name = name
+    }
+    var p1 = new Person('loki', 12)
+    ```
+
+
 
     
 34. 原型链继承
